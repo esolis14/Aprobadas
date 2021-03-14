@@ -3,22 +3,21 @@
 body {
     min-height: 100vh;
     font-family: Verdana, Geneva, sans-serif;
-}
-
-form {
     text-align: center;
     font-size: 12px;
 }
 
-form a {
+a {
     text-decoration: none;
     color: #125583;
 }
+#switchForm p { margin: 0;}
 
 h1  {
     text-align: center;
     margin-block-start: 0;
     margin-block-end: 10px;
+    text-transform: uppercase;
 }
 #logo { width: 35%;}
 
@@ -47,22 +46,28 @@ h1  {
     border: 1px solid #ccc;
 }
 
-.error-message {
+form#register_form {
+    margin-top: 80px;
+}
+form#register_form input {
+    padding: 8px;
+}
+
+.error_message {
     color: #CA202A;
 }
 
-form button {
+button {
     text-transform: uppercase;
     background: #ccc;
     border-radius: 1px;
     border: 1px solid #ccc;
     padding: 12px 40px;
-    margin-top: 5px;
-    color: #FFFFFF;
+    color: white;
     cursor: pointer;
 }
 
-form button:hover, form button:active, form button:focus {
+button:hover, button:active, button:focus {
     background: #125583;
 }
 

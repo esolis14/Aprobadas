@@ -10,16 +10,28 @@
     <section class="top"></section>
     <section class="bottom"></section>
     <section class="center">
-        <form method="post" action="#">
+        <form id="login_form" method="post" action="#">
             <h1><img id="logo" src="images/logo.png" alt="Logo"></h1>
             <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <p class="error-message"></p>
-            <p class="message">Not registered?
-                <a href="#">Create an account.</a>
-            </p>
-            <p><button type="submit" name="login" class="login-button">Login</button></p>
+            <input type="password" placeholder="Contraseña" />
+            <p class="error_message"></p>
+            <p><button id="login_button" type="submit" name="login">Iniciar sesión</button></p>
         </form>
+        <form id="register_form" method="post" action="#" style="display: none">
+            <h1>Nueva cuenta</h1>
+            <input type="text" placeholder="Nombre">
+            <input type="text" placeholder="Apellido">
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Contraseña" />
+            <input type="password" placeholder="Repetir contraseña" />
+            <p class="error_message"></p>
+            <p><button id="register_button" type="submit" name="register">Registrarse</button></p>
+        </form>
+        <a id="switchForm" href="#">
+            <p>¿Todavía no estás registrado?<br>Regístrate ya</p>
+        </a>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/formulario.js"> </script>
     </section>
 </main>
 </body>
