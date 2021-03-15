@@ -4,11 +4,11 @@ $("#switchForm").click(function(){
     const isLoginVisible = $("#login_form").is(":visible");
     if(isLoginVisible) {
         $("#login_form").hide();
-        $("#register_form").show();
-        $("#switchForm > p").html("Iniciar sesión");
+        $("#email_form").show();
+        $("#switchForm > p").html("¿Tienes ya una cuenta?<br>Inicia sesión");
     } else {
         $("#login_form").show();
-        $("#register_form").hide();
-        $("#switchForm > p").html("¿Todavía no estás registrado?<br>Regístrate ya.");
+        $("#email_form").hide();
+        $("#switchForm > p").html("¿Todavía no estás registrado?<br>Regístrate ya");
     }
 })

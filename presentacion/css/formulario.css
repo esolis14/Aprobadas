@@ -19,7 +19,7 @@ h1  {
     margin-block-end: 10px;
     text-transform: uppercase;
 }
-#logo { width: 35%;}
+.logo { width: 35%;}
 
 .center {
     position: absolute;
