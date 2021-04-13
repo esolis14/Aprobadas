@@ -4,13 +4,17 @@
 
 1. Instalar MySQL.
 2. Crear un nuevo usuario "aprobadas" con contraseña "password":
+
 	mysql -u root -p
+	
 	CREATE USER 'aprobadas'@'localhost' IDENTIFIED BY 'password';
 
 3. Crear base de datos "aprobadas":
+
 	CREATE DATABASE aprobadas;
 
 4. Conceder todos los privilegios al nuevo usuario:
+
 	GRANT ALL PRIVILEGES ON aprobadas TO 'aprobadas'@'localhost';
 
 5. Al ejecutar el proyecto, se crean las tablas en la base de datos. Puede que haga falta añadir JDK el proyecto (descargar y seleccionar versión 11).
