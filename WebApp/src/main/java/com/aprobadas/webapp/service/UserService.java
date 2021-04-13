@@ -2,6 +2,7 @@ package com.aprobadas.webapp.service;
 
 import com.aprobadas.webapp.model.Role;
 import com.aprobadas.webapp.model.User;
+import com.aprobadas.webapp.repository.RoleRepository;
 import com.aprobadas.webapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +20,8 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -48,7 +51,12 @@ public class UserService implements UserDetailsService {
             newUser.setId(userRepository.findByEmail(newUser.getEmail()).get().getId());
             newUser.setEnabled(true);
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword())); // Se encripta la contraseña
-            newUser.setRoles(Collections.singletonList(new Role("ROLE_USER"))); // Se asigna el role USER al nuevo usuario
+            // Se asigna el role USER al nuevo usuario
+            if(roleRepository.findByRole("ROLE_USER").isPresent()) {
+                newUser.setRoles(Collections.singletonList(roleRepository.findByRole("ROLE_USER").get()));
+            } else {
+                newUser.setRoles(Collections.singletonList(new Role("ROLE_USER")));
+            }
         }
         userRepository.save(newUser);
     }
