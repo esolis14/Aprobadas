@@ -1,6 +1,6 @@
-// Cambio dinámico entre formulario de login y formulario de registro
+// Cambio dinámico entre formulario de login y formulario de email
 $("#switchForm").click(function(){
-    $("login_form")
+    //$("login_form")
     const isLoginVisible = $("#login_form").is(":visible");
     if(isLoginVisible) {
         $("#login_form").hide();
@@ -24,4 +24,11 @@ function validateEmail() {
     } else  {
         return true;
     }
+}
+
+// Comprobación que ambas contraseñas sean iguales
+function validatePassword() {
+    const password = document.getElementById("password").value;
+    const rePassword = document.getElementById("re_password").value;
+    return password === rePassword;
 }

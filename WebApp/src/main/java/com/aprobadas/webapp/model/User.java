@@ -1,19 +1,12 @@
 package com.aprobadas.webapp.model;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -21,27 +14,22 @@ import javax.persistence.ManyToMany;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
+    @NotNull
     private String email;
-
-    @Column
     private String password;
-
-    @Column
+    private String nombre;
+    private String apellido;
+    private String tlf;
     private String code;
+    private boolean enabled; // Comprobar si interfiere en temas de seguridad.
 
-    @Column
-    private boolean enabled;
-
-    @Column
-    private boolean confirmed;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "roles_users",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 
     public User(String email, String code) {
         this.email = email;

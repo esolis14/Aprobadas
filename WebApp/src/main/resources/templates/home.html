@@ -24,7 +24,7 @@
     <i class="fa fa-linkedin"></i>
     <p>© 2021. All Rights Reserved.</p>
     <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
-        <input type="submit" value="Cerrar Sesión"/>
+        <button type="submit" value="logout">Cerrar Sesión</button>
     </form>
  </footer>
 </body>
