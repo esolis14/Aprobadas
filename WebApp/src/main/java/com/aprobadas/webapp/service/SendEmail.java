@@ -15,14 +15,15 @@ public class SendEmail {
     public void send(String email, String codigo) {
 
         final String destinatario = email;
-        final String remitente = "soen287assignment3@gmail.com";
-        final String password = "soen287AS3soen287AS3";
+        final String remitente = "noreplyaprobadas@gmail.com";
+        final String password = "aprobadoasegurado";
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
         props.setProperty("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.trust", "*");
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
