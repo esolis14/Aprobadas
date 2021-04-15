@@ -1,11 +1,9 @@
 package com.aprobadas.webapp.model;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
-import java.util.Set;
 import javax.persistence.*;
 
 @Data
@@ -16,7 +14,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
     private String email;
     private String password;
     private String nombre;
