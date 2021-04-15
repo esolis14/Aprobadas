@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>aprobadas</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
+</head>
+<body id="image_background">
+<main>
+    <section class="top"></section>
+    <section class="bottom"></section>
+    <section class="center">
+        <form id="register_form" method="post" th:action="@{/register}" th:object="${user}" onsubmit="return validatePassword()">
+            <input type="text" placeholder="Nombre" th:field="*{nombre}" required />
+            <input type="text" placeholder="Apellido" th:field="*{apellido}" required />
+            <input type="email" th:field="*{email}" th:value="${user.email}" required/>
+            <input type="password" id="password" placeholder="Contraseña" th:field="*{password}" required/>
+            <input type="password" id="re_password" placeholder="Confirma la contraseña" required/>
+            <p><button id="register_button" type="submit">Registrarse</button></p>
+        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/form.js"> </script>
+    </section>
+</main>
+</body>
+</html>

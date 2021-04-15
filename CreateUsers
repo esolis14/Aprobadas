@@ -1,0 +1,11 @@
+CREACIÓN DE USUARIOS PARA TESTEAR EL LOGIN
+
+INSERT INTO user (id,enabled,password,email) VALUES(1,0b1,"$2a$04$GBqo16InGagT8EHEURDZu.ypNslTMTi8uwB/KpQ9daXBBbHI1UFje","admin@gmail.com");
+
+INSERT INTO user (id,enabled,password,email) VALUES(2,0b1,"$2a$04$GBqo16InGagT8EHEURDZu.ypNslTMTi8uwB/KpQ9daXBBbHI1UFje","user@gmail.com");
+
+INSERT INTO role (id,role) VALUES (1,"ROLE_ADMIN");
+INSERT INTO role (id,role) VALUES (2,"ROLE_USER");
+INSERT INTO roles_users (user_id, role_id) VALUES (1,1);
+INSERT INTO roles_users (user_id, role_id) VALUES (1,2);
+INSERT INTO roles_users (user_id, role_id) VALUES (2,2);
