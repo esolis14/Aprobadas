@@ -49,7 +49,6 @@ public class UserService implements UserDetailsService {
     public void saveUser(final User newUser) {
         if(existsUserByEmail(newUser)) {
             newUser.setId(userRepository.findByEmail(newUser.getEmail()).get().getId());
-            newUser.setEnabled(true);
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword())); // Se encripta la contraseña
             // Se asigna el role USER al nuevo usuario
             if(roleRepository.findByRole("ROLE_USER").isPresent()) {
