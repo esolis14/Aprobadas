@@ -15,7 +15,7 @@ CREATE DATABASE aprobadas;
 ```
 4. Conceder todos los privilegios al nuevo usuario:
 ```
-GRANT ALL PRIVILEGES ON aprobadas TO 'aprobadas'@'localhost';
+GRANT ALL PRIVILEGES ON aprobadas.* TO 'aprobadas'@'localhost';
 ```
 5. Al ejecutar el proyecto, se crean las tablas en la base de datos. (Puede que haga falta añadir JDK el proyecto: descargar y seleccionar versión 11).
 6. Para testear el login, crear manualmente a través de la consola de mysql dos usuarios con diferentes privilegios (comandos en archivo CreateUsers).
