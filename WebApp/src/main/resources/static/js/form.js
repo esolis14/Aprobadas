@@ -1,8 +1,6 @@
-// Cambio dinámico entre formulario de login y formulario de registro
+// Cambio dinámico entre formulario de login y formulario de email
 $("#switchForm").click(function(){
-    $("login_form")
-    const isLoginVisible = $("#login_form").is(":visible");
-    if(isLoginVisible) {
+    if($("#login_form").is(":visible")) {
         $("#login_form").hide();
         $("#email_form").show();
         $("#switchForm > p").html("¿Tienes ya una cuenta?<br>Inicia sesión");
@@ -23,5 +21,21 @@ function validateEmail() {
         return false;
     } else  {
         return true;
+    }
+}
+
+// Comprobación que ambas contraseñas sean iguales
+function validatePassword() {
+    const password = document.getElementById("password");
+    const rePassword = document.getElementById("re_password");
+    if(password.value === rePassword.value) {
+        return true;
+    } else {
+        alert("Las contraseñas no coinciden.");
+        password.value = "";
+        rePassword.value = "";
+        password.style.borderColor = "red";
+        rePassword.style.borderColor = "red";
+        return false;
     }
 }

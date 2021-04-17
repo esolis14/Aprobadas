@@ -46,6 +46,20 @@ main {
     min-height: calc(100% - 80px - 220px);  /* height of body - height of nav - height of footer */
 }
 
+button {
+    text-transform: uppercase;
+    background: #ccc;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+    padding: 12px 40px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover, button:active, button:focus {
+    background: #125583;
+}
+
 footer {
     position: absolute;
     bottom: 0;

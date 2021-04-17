@@ -1,74 +1,86 @@
 package com.aprobadas.webapp.service;
 
 import com.aprobadas.webapp.model.Role;
-import com.aprobadas.webapp.model.Usuario;
+import com.aprobadas.webapp.model.User;
+import com.aprobadas.webapp.repository.RoleRepository;
 import com.aprobadas.webapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    RoleRepository roleRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        // Buscar usuario y si no existe lanzar una excepción
-        com.aprobadas.webapp.model.User appUser = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("No existe un usuario con ese email."));
+        User appUser = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("No existe un usuario con ese email."));
+        /*if (appUser == null) { throw new UsernameNotFoundException("No existe un usuario con ese email.");}*/
 
-        // Mapear nuestra lista de Authority con la de spring security
+        // Se mapea la lista de roles con la de spring security
         List grantList = new ArrayList();
         for (Role role: appUser.getRoles()) {
-            //GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRole());
-            grantList.add(new SimpleGrantedAuthority(role.getRole()));
+            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRole());
+            grantList.add(grantedAuthority);
         }
 
-        //Crear el objeto UserDetails que va a ir en sesion y retornarlo.
-        return new User(appUser.getEmail(), appUser.getPassword(), grantList);
+        // Se crea el objeto UserDetails que va a ir en la sesión
+        return new org.springframework.security.core.userdetails.User(appUser.getEmail(), appUser.getPassword(), grantList);
     }
 
-    public boolean existeUsuario(com.aprobadas.webapp.model.User user) {
-        return userRepository.existsUsersByEmail(user.getEmail());
+    public boolean existsUserByEmail(User user) {
+        return userRepository.findByEmail(user.getEmail()).isPresent();
     }
 
-    // Crea o actualiza un usuario
-    public boolean crearUsuario(final com.aprobadas.webapp.model.User newUser) {
-        if(existeUsuario(newUser)) {
+    public void saveUser(final User newUser) {
+        if(existsUserByEmail(newUser)) {
             newUser.setId(userRepository.findByEmail(newUser.getEmail()).get().getId());
-            newUser.setConfirmed(true);
-            userRepository.save(newUser);
-            return true;
-        } else {
-            userRepository.save(newUser);
-            return false;
+            newUser.setEnabled(true);
+            newUser.setPassword(passwordEncoder.encode(newUser.getPassword())); // Se encripta la contraseña
+            // Se asigna el role USER al nuevo usuario
+            if(roleRepository.findByRole("ROLE_USER").isPresent()) {
+                newUser.setRoles(Collections.singletonList(roleRepository.findByRole("ROLE_USER").get()));
+            } else {
+                newUser.setRoles(Collections.singletonList(new Role("ROLE_USER")));
+            }
         }
+        userRepository.save(newUser);
     }
 
-    public void enviarCodigo(final com.aprobadas.webapp.model.User newUser) {
-        // Genera código aleatorio de 6 dígitos
-        Random rnd = new Random();
-        String codigo = String.format("%06d", rnd.nextInt(999999));
-        // Envia email con código de verificación
+    public void sendCode(final User newUser) {
+        // Se genera código aleatorio de 6 dígitos
+        String code = String.format("%06d", new Random().nextInt(999999));
+        // Se envía email con código de verificación
         try {
             SendEmail email = new SendEmail();
-            email.send(newUser.getEmail(), codigo);
+            email.send(newUser.getEmail(), code);
         } catch(RuntimeException re) {
             re.printStackTrace();
         }
         // Se guardan los datos del usuario en la Base de Datos
-        crearUsuario(new com.aprobadas.webapp.model.User(newUser.getEmail(), codigo));
+        saveUser(new User(newUser.getEmail(), code));
     }
 
+    public boolean checkCode(final User registration) {
+        if(userRepository.findByEmail(registration.getEmail()).isPresent()) {
+            User user = userRepository.findByEmail(registration.getEmail()).get();
+            return user.getEmail().equals(registration.getEmail()) && user.getCode().equals(registration.getCode());
+        } else {
+            throw new UsernameNotFoundException("No existe un usuario con ese email.");
+        }
+    }
 }

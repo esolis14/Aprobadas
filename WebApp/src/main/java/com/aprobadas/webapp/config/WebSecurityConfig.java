@@ -17,8 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     UserService userService;
 
-    // Crea el encriptador de contraseñas
-    @Bean
+    @Bean // Encriptador de contraseñas
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(4);
     }
@@ -28,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http
                 .authorizeRequests()
                 .antMatchers("/css/**","/img/**","/js/**").permitAll()
-                .antMatchers("/","/index","/codigoForm").permitAll()
+                .antMatchers("/","/index", "/email", "/sendCode", "/code", "/checkCode", "/registration", "/register").permitAll()
                 .antMatchers("/admin*").access("hasRole('ADMIN')")
                 .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
                     .anyRequest().authenticated()

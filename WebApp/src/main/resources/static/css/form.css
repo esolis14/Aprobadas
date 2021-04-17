@@ -7,7 +7,7 @@ body {
     font-size: 12px;
 }
 
-#email_form_body {
+#image_background {
     background: url("../img/colores.png") no-repeat center;
     background-size: cover;
 }
@@ -51,15 +51,15 @@ h1  {
 }
 
 form#register_form {
-    margin-top: 80px;
+    margin-top: 90px;
 }
 form#register_form input {
+    width: 70%;
     padding: 8px;
 }
 
-.error_message {
-    color: #CA202A;
-}
+.error_message { color: #CA202A;}
+.ok_message { color: darkgreen;}
 
 button {
     text-transform: uppercase;
