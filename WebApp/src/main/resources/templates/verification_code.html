@@ -16,7 +16,7 @@
             <input type="email" th:field="*{email}" th:value="${user.email}" required/>
             <input id="codigo" type="number" placeholder="Código: XXXXXX" th:field="*{code}" required/>
             <p th:if="${codeError}" class="error_message">Código incorrecto.</p>
-            <p><button id="code_button" type="submit">Enviar</button></p>
+            <button id="code_button" type="submit">Enviar</button>
         </form>
     </section>
 </main>

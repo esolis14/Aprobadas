@@ -12,4 +12,14 @@ public class AppController {
     public String showHome() {
         return "home";
     }
+
+    @GetMapping("/teacher")
+    public String showTeacherProfile() {
+        return "teacher_profile";
+    }
+
+    @GetMapping("/student")
+    public String showStudentProfile() {
+        return "student_profile";
+    }
 }

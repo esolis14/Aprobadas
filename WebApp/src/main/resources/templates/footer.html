@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <link rel="stylesheet" type="text/css" href="css/footer.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<footer>
+  <p id="title" style="font-size: 25px;">aprobadas</p>
+  <i class="fa fa-facebook-official"></i>
+  <i class="fa fa-instagram"></i>
+  <i class="fa fa-snapchat"></i>
+  <i class="fa fa-pinterest-p"></i>
+  <i class="fa fa-twitter"></i>
+  <i class="fa fa-linkedin"></i>
+  <p>© 2021. All Rights Reserved.</p>
+  <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+    <button class="logout-btn" type="submit" value="logout">Cerrar Sesión</button>
+  </form>
+</footer>
+</body>
+</html>

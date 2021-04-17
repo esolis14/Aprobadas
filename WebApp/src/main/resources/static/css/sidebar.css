@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+}
+
+.sidebar {
+    width: 20%;
+    height: 100vh;
+    left: 0;
+    background-color: #125583;
+    z-index: 99;
+    position: fixed;
+}
+
+img {
+    height: 200px;
+}
+
+i {
+    margin-right: 10px;
+}
+
+a {
+    font-size: 1.6em;
+    color: white;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    position: absolute;
+    top:50px;
+}
+
+.links-box {
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Mobile Responsive */
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        width: 50%;
+    }
+}

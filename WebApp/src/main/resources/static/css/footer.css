@@ -1,0 +1,26 @@
+footer {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+footer a { color: #125583;}
+
+.logout-btn {
+    background-color: #125583;
+    color: white;
+    border-radius: 100px;
+    padding: 10px;
+    font-size: 1em;
+    box-shadow: none;
+    border: 1px solid white;
+    width: 45%;
+}
+
+.logout-btn:hover {
+    background-color: white;
+    color: #125583;
+    text-decoration: underline;
+}
