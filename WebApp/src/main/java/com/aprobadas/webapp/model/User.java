@@ -1,29 +1,41 @@
 package com.aprobadas.webapp.model;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Collection;
-import java.util.Set;
 import javax.persistence.*;
 
+// @Data incluye las anotaciones @ToString, @EqualsAndHashCode, @Getter, @Setter y @RequiredArgsConstructor
 @Data
 @Entity
 @NoArgsConstructor
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "apellido")
     private String apellido;
+
+    @Column(name = "tlf")
     private String tlf;
+
+    @Column(name = "code")
     private String code;
-    private boolean enabled; // Comprobar si interfiere en temas de seguridad.
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "roles_users",
@@ -31,6 +43,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    // Constructor
     public User(String email, String code) {
         this.email = email;
         this.code = code;
