@@ -1,39 +1,58 @@
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile {
     height: 100vh;
     width: 80%;
     float: right;
     overflow-y: auto;
-    background-color: #f5f5f5;
+    background-color: white;
 }
 
 .profile-cover {
     background-image: url('../img/profile-cover.jpg');
-    background-color: #60b8d4;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 150px;
+    height: 250px;
     width: 100%;
 }
 
 .profile-data {
     height: auto;
     width: 100%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.profile-data h1 {
+    color: #125583;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.profile-data form {
+    width: 80%;
 }
 
 .profile-form {
-    width: 80%;
     margin: 0 auto;
-    padding: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 50px;
+    padding-top: 20px;
+    background-color: #f5f5f5;
+}
+
+.profile-form h2 {
+    width: 100%;
+    color: #125583;
+    margin-top: 0;
+    text-align: left;
 }
 
 .profile-form input {
@@ -41,15 +60,19 @@
 }
 
 .form-name-surname {
-    width: 103%;
+    width: 102%;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
 .form-name-surname input {
     width: 45%;
+}
+
+.form-data {
+    width: 100%;
 }
 
 .form-control {
@@ -73,6 +96,7 @@ select {
     border-radius: 100px;
     padding: 10px;
     font-size: 1em;
+    font-weight: bold;
     box-shadow: none;
     border: 1px solid #125583;
     margin-top: 40px;
@@ -84,3 +108,48 @@ select {
     color: white;
     text-decoration: underline;
 }
+
+.user-data {
+    margin: 0 auto;
+    padding: 35px;
+    width: 80%;
+    background-color: #f5f5f5;
+}
+
+.user-data p {
+    margin-top: 35px;
+}
+
+.user-data span {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.profile-name-surname {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.middle-with {
+    width: 50%;
+}
+
+.shadow {
+    box-shadow: 2px 2px 20px 0px #CCC;
+}
+
+hr {
+    border: 1px solid gray;
+}
+
+.margin-left {
+    margin-left: 40px;
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+

@@ -1,8 +1,6 @@
 package com.aprobadas.webapp.controller;
 
-import com.aprobadas.webapp.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -13,13 +11,13 @@ public class AppController {
         return "home";
     }
 
-    @GetMapping("/teacher")
-    public String showTeacherProfile() {
-        return "teacher_profile";
+    @GetMapping("/edit")
+    public String showStudentProfile() {
+        return "edit_profile";
     }
 
-    @GetMapping("/student")
-    public String showStudentProfile() {
-        return "student_profile";
+    @GetMapping("/profile")
+    public String showProfile() {
+        return "profile";
     }
 }

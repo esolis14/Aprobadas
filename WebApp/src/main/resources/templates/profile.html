@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="UTF-8">
+  <title>aprobadas - Student Profile</title>
+  <link rel="stylesheet" type="text/css" href="css/profile.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div th:insert="base"></div>
+<div class="profile">
+  <div class="profile-cover"></div>
+  <div class="profile-data">
+    <h1>Tus Datos</h1>
+    <div class="user-data shadow">
+      <div class="profile-name-surname">
+        <div class="middle-with"><p><span>Nombre:</span> Isabel</p></div>
+        <div class="middle-with"><p class="margin-left"><span>Apellidos:</span> Plaza Vas</p></div>
+      </div>
+      <hr class="no-margin-top">
+      <!-- TODO: Replace Data for requested one -->
+      <p><span>Correo Electrónico:</span> isaplaza@gmail.com</p>
+      <hr>
+      <p><span>Teléfono:</span> isaplaza@gmail.com</p>
+      <hr>
+      <p><span>Grado:</span> isaplaza@gmail.com</p>
+      <hr>
+    </div>
+  </div>
+</div>
+</body>
+</html>
