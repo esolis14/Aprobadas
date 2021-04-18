@@ -10,24 +10,38 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.servlet.http.HttpSession;
+
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    HttpSession session;
+
+    //private static final Logger logger = LoggerFactory.getLogger(AuthenticationSuccessHandlerImpl.class);
 
     @Bean // Encriptador de contraseñas
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(4);
     }
 
+    // Registra el service para usuarios y el encriptador de contraseña
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        // Setting Service to find User in the database and Setting PassswordEncoder
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/css/**","/img/**","/js/**").permitAll()
-                .antMatchers("/","/index", "/email", "/sendCode", "/code", "/checkCode", "/registration", "/register").permitAll()
+                .antMatchers("/css/**", "/img/**", "/js/**").permitAll()
+                .antMatchers("/", "/index", "/form/**").permitAll()
                 .antMatchers("/admin*").access("hasRole('ADMIN')")
                 .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
                     .anyRequest().authenticated()
@@ -37,18 +51,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .permitAll()
                     .defaultSuccessUrl("/home") // URL a la que será redigirido trás el inicio de sesión
                     .failureUrl("/login?error=true") // URL a la que será redigirido cuando el inicio de sesión falla
+                    //.successHandler(this::loginSuccessHandler)
                     .usernameParameter("email")
                     .passwordParameter("password")
                     .and()
                 .logout() // Personaliza el proceso de cierre de sesión
                     .permitAll()
                     .logoutSuccessUrl("/login?logout");
-    }
-
-    // Registra el service para usuarios y el encriptador de contraseña
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // Setting Service to find User in the database and Setting PassswordEncoder
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
-    }
+        }
 }
+    /*
+    private void loginSuccessHandler(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            Authentication authentication) {
+        session.setAttribute("vistaProf", true);
+    }*/

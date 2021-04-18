@@ -4,6 +4,10 @@
     transition-delay: 0s;
 }
 
+.center.code_form {
+    transition: 0s;
+}
+
 /* Effects */
 main:hover .top:before, main:active .top:before, main:hover .bottom:before, main:active .bottom:before, main:hover .top:after, main:active .top:after, main:hover .bottom:after, main:active .bottom:after {
     margin-left: 200px;

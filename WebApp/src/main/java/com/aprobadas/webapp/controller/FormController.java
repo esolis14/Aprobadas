@@ -10,17 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/form")
 public class FormController {
 
     @Autowired
     private final UserService userService;
-
-    @GetMapping({"/","/login"})
-    public String showLogin(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("emailError", false);
-        return "index";
-    }
 
     @PostMapping("/sendCode")
     public String sendVerificationCode(@ModelAttribute("user") User user, Model model) {

@@ -23,6 +23,11 @@
     <i class="fa fa-twitter"></i>
     <i class="fa fa-linkedin"></i>
     <p>© 2021. All Rights Reserved.</p>
+    <p th:text ="${email}"></p>
+    <p th:text="${session.vista}"></p>
+    <form sec:authorize="isAuthenticated()" th:action="@{/changeView}" method="post">
+        <button type="submit" value="changeView">Cambiar Vista</button>
+    </form>
     <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
         <button type="submit" value="logout">Cerrar Sesión</button>
     </form>

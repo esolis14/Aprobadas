@@ -10,7 +10,7 @@
     <section class="top"></section>
     <section class="bottom"></section>
     <section class="center">
-        <form id="register_form" method="post" th:action="@{/register}" th:object="${user}" onsubmit="return validatePassword()">
+        <form id="register_form" method="post" th:action="@{/form/register}" th:object="${user}" onsubmit="return validatePassword()">
             <input type="text" placeholder="Nombre" th:field="*{nombre}" required />
             <input type="text" placeholder="Apellido" th:field="*{apellido}" required />
             <input type="email" th:field="*{email}" th:value="${user.email}" required/>
