@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>aprobadas - Student Profile</title>
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div th:insert="base"></div>
+<div class="profile">
+    <div class="profile-cover"></div>
+    <div class="profile-data">
+        <!-- <form id="login_form" method="post" th:action="@{/login}"> -->
+        <form class="profile-form flex-column-center shadow" method="post" th:action="@{/updateUser}" th:object="${user}">
+            <h2>Aquí puedes editar tus datos</h2>
+            <div class="form-name-surname">
+                <input class="form-control" type="text" name="name" th:field="*{nombre}" th:value="${user.nombre}"  required/>
+                <input class="form-control" type="text" name="surname" th:field="*{apellido}" th:value="${user.apellido}"  required/>
+            </div>
+            <div class="form-data flex-column-center">
+                <!-- TODO: Replace email with user.email registered -->
+                <input class="form-control" type="email" name="email" th:field="*{email}" th:value="${user.email}" required>
+                <input class="form-control" type="text" name="phone" th:field="*{tlf}" th:value="${user.tlf}" required/>
+                <select name="grade" id="grado" >
+                    <option value="" selected disabled hidden>- Selecciona Grado -</option>
+                    <option value="Teleco">Teleco</option>
+                    <option value="Industrial">Industrial</option>
+                    <option value="Ambiental">Ambiental</option>
+                </select>
+            </div>
+            <button id="save_button" type="submit">Guardar Datos</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

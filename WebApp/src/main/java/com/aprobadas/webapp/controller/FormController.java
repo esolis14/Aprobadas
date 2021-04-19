@@ -19,19 +19,19 @@ public class FormController {
     public String showLogin(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("emailError", false);
-        return "index";
+        return "login";
     }
 
     @PostMapping("/sendCode")
     public String sendVerificationCode(@ModelAttribute("user") User user, Model model) {
         if(userService.existsUserByEmail(user)) {
             model.addAttribute("emailError", true);
-            return "index";
+            return "login";
         } else {
             userService.sendCode(user);
             model.addAttribute("user", user);
             model.addAttribute("codeError", false);
-            return "/code";
+            return "/verification_code";
         }
     }
 
@@ -44,7 +44,7 @@ public class FormController {
             user.setCode(null);
             model.addAttribute("user", user);
             model.addAttribute("codeError", true);
-            return "code";
+            return "verification_code";
         }
     }
 

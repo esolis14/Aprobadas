@@ -42,12 +42,21 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(appUser.getEmail(), appUser.getPassword(), grantList);
     }
 
+    // Pendiente de eliminar
     public boolean existsUserByEmail(User user) {
         return userRepository.findByEmail(user.getEmail()).isPresent();
     }
 
+    public User getUserByEmail(String email) {
+        if(userRepository.findByEmail(email).isPresent()) {
+            return userRepository.findByEmail(email).get();
+        } else {
+            throw new UsernameNotFoundException("No existe un usuario con ese email.");
+        }
+    }
+
     public void saveUser(final User newUser) {
-        if(existsUserByEmail(newUser)) {
+        if(userRepository.findByEmail(newUser.getEmail()).isPresent()) {
             newUser.setId(userRepository.findByEmail(newUser.getEmail()).get().getId());
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword())); // Se encripta la contraseña
             // Se asigna el role USER al nuevo usuario
@@ -58,6 +67,15 @@ public class UserService implements UserDetailsService {
             }
         }
         userRepository.save(newUser);
+    }
+
+    public void updateUser(final User user) {
+        if(userRepository.findByEmail(user.getEmail()).isPresent()) {
+            user.setId(userRepository.findByEmail(user.getEmail()).get().getId());
+            user.setPassword(userRepository.findByEmail(user.getEmail()).get().getPassword());
+            user.setRoles(userRepository.findByEmail(user.getEmail()).get().getRoles());
+        }
+        userRepository.save(user);
     }
 
     public void sendCode(final User newUser) {

@@ -17,6 +17,8 @@ a {
     cursor: pointer;
     color: #125583;
 }
+a:hover { text-decoration: underline;}
+
 #switchForm p { margin: 0;}
 
 h1  {
@@ -63,12 +65,14 @@ form#register_form input {
 
 button {
     text-transform: uppercase;
-    background: #ccc;
+    background: #1A6AA0;
     border-radius: 1px;
-    border: 1px solid #ccc;
+    border: 1px solid #1A6AA0;
     padding: 12px 40px;
     color: white;
     cursor: pointer;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
 }
 
 button:hover, button:active, button:focus {
