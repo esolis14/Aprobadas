@@ -69,6 +69,8 @@ button {
     padding: 12px 40px;
     color: white;
     cursor: pointer;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
 }
 
 button:hover, button:active, button:focus {

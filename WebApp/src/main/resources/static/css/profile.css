@@ -25,7 +25,7 @@
 .profile-data {
     height: auto;
     width: 100%;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 50px;
 }
 
@@ -43,8 +43,7 @@
 
 .profile-form {
     margin: 0 auto;
-    padding: 50px;
-    padding-top: 20px;
+    padding: 20px 50px 50px;
     background-color: #f5f5f5;
 }
 
@@ -137,7 +136,7 @@ select {
 }
 
 .shadow {
-    box-shadow: 2px 2px 20px 0px #CCC;
+    box-shadow: 2px 2px 20px 0 #CCC;
 }
 
 hr {
