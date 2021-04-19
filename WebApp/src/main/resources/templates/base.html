@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>aprobadas</title>
@@ -9,14 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-<sidebar class="sidebar flex-column-center">
-  <img class="logo" src="img/logo.png" alt="Logo">
-  <div class="links-box">
-    <a href="/profile" class="page"><i class="fa fa-fw fa-user fa-lg icons"></i>Mi perfil</a>
-    <a href="#" class="page"><i class="fa fa-fw fa-graduation-cap fa-lg icons"></i>Mis ofertas</a>
-    <a href="#" class="page"><i class="fa fa-fw fa-search fa-lg icons"></i>Clases</a>
-  </div>
-  <div th:insert="footer"></div>
-</sidebar>
+<nav class="sidebar flex-column-center">
+  <section class="logo">
+    <img src="img/logo.png" alt="Logo">
+  </section>
+  <section class="links-box">
+    <ul>
+      <li><a href="/profile" class="page"><i class="fa fa-fw fa-user fa-lg icons"></i>Mi perfil</a></li>
+      <li><a href="#" class="page"><i class="fa fa-fw fa-graduation-cap fa-lg icons"></i>Mis ofertas</a></li>
+      <li><a href="#" class="page"><i class="fa fa-fw fa-search fa-lg icons"></i>Clases</a></li>
+    </ul>
+  </section>
+  <section th:insert="footer"></section>
+</nav>
 </body>
 </html>

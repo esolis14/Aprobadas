@@ -11,18 +11,17 @@
 <div class="profile">
     <div class="profile-cover"></div>
     <div class="profile-data">
-        <h1>Tus Datos</h1>
         <!-- <form id="login_form" method="post" th:action="@{/login}"> -->
-        <form class="profile-form flex-column-center shadow" method="post">
+        <form class="profile-form flex-column-center shadow" method="post" th:action="@{/updateUser}" th:object="${user}">
             <h2>Aquí puedes editar tus datos</h2>
             <div class="form-name-surname">
-                <input class="form-control" type="text" name="name" placeholder="Nombre" required/>
-                <input class="form-control" type="text" name="surname" placeholder="Apellidos" required/>
+                <input class="form-control" type="text" name="name" th:field="*{nombre}" th:value="${user.nombre}"  required/>
+                <input class="form-control" type="text" name="surname" th:field="*{apellido}" th:value="${user.apellido}"  required/>
             </div>
             <div class="form-data flex-column-center">
                 <!-- TODO: Replace email with user.email registered -->
-                <input class="form-control" type="email" name="email" placeholder="email@ikasle.ehu.eus" required/>
-                <input class="form-control" type="phone" name="phone" placeholder="Teléfono" required/>
+                <input class="form-control" type="email" name="email" th:field="*{email}" th:value="${user.email}" required>
+                <input class="form-control" type="text" name="phone" th:field="*{tlf}" th:value="${user.tlf}" required/>
                 <select name="grade" id="grado" >
                     <option value="" selected disabled hidden>- Selecciona Grado -</option>
                     <option value="Teleco">Teleco</option>

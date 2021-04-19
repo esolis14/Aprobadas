@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>aprobadas - Student Profile</title>
   <link rel="stylesheet" type="text/css" href="css/profile.css">
+  <link rel="stylesheet" type="text/css" href="css/templates.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div th:insert="base"></div>
-<div class="profile">
-  <div class="profile-cover"></div>
-  <div class="profile-data">
+<section th:insert="base"></section>
+<section class="profile">
+  <article class="profile-cover"></article>
+  <article class="profile-data">
     <h1>Tus Datos</h1>
-    <div class="user-data shadow">
+    <form class="user-data shadow" method="post" th:action="@{/edit}" th:object="${user}">
       <div class="profile-name-surname">
-        <div class="middle-with"><p><span>Nombre:</span> Isabel</p></div>
-        <div class="middle-with"><p class="margin-left"><span>Apellidos:</span> Plaza Vas</p></div>
+        <div class="middle-with"><p><span class="data-label">Nombre: </span><span th:text="${user.nombre}"></span></p></div>
+        <div class="middle-with"><p class="margin-left"><span class="data-label">Apellidos: </span><span th:text="${user.apellido}"></span></p></div>
       </div>
       <hr class="no-margin-top">
+      <p><span class="data-label">Correo Electrónico: </span><span th:text="${user.email}"></span></p>
+      <hr>
+      <p><span class="data-label">Teléfono: </span><span th:text="${user.tlf}"></span></p>
+      <hr>
       <!-- TODO: Replace Data for requested one -->
-      <p><span>Correo Electrónico:</span> isaplaza@gmail.com</p>
+      <p><span class="data-label">Grado: </span>Teleco</p>
       <hr>
-      <p><span>Teléfono:</span> isaplaza@gmail.com</p>
-      <hr>
-      <p><span>Grado:</span> isaplaza@gmail.com</p>
-      <hr>
-    </div>
-  </div>
-</div>
+      <button id="edit-btn" type="submit">Editar perfil</button>
+    </form>
+  </article>
+</section>
 </body>
 </html>

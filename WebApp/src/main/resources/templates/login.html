@@ -22,7 +22,7 @@
             <h1><img class="logo" src="img/logo.png" alt="Logo"></h1>
             <input id="reg_email" type="email" placeholder="email@ikasle.ehu.eus" th:field="*{email}" required/>
             <p th:if="${emailError}" class="error_message">Ya existe un usuario con este email.</p>
-            <button id="email_button" type="submit" th:action="cogido">Registrarse</button>
+            <button id="email_button" type="submit">Registrarse</button>
         </form>
         <a id="switchForm">
             <p>¿Todavía no estás registrado?<br>Regístrate ya</p>

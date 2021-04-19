@@ -1,11 +1,13 @@
 footer {
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     left: 0;
     width: 100%;
     text-align: center;
     color: white;
+    font-size: 0.85em;
 }
+
 footer a { color: #125583;}
 
 .logout-btn {
@@ -13,14 +15,20 @@ footer a { color: #125583;}
     color: white;
     border-radius: 100px;
     padding: 10px;
-    font-size: 1em;
+    font-size: 12px;
+    text-transform: uppercase;
     box-shadow: none;
     border: 1px solid white;
-    width: 45%;
+    width: 70%;
+    margin-bottom: 35px;
 }
 
 .logout-btn:hover {
     background-color: white;
     color: #125583;
-    text-decoration: underline;
+}
+
+footer p {
+    margin-block-start: 14px;
+    margin-block-end: 14px;
 }
