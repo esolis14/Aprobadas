@@ -37,6 +37,9 @@ public class User implements Serializable {
     @Column(name = "code")
     private String code;
 
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Grado grado;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "roles_users",
             joinColumns = @JoinColumn(name = "user_id"),
