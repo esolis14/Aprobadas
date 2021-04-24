@@ -17,7 +17,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "email")
     private String email;
@@ -37,7 +37,7 @@ public class User implements Serializable {
     @Column(name = "code")
     private String code;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Grado grado;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
