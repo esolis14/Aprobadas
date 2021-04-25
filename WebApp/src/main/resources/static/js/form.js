@@ -11,6 +11,32 @@ $("#switchForm").click(function(){
     }
 })
 
+// Cambio dinámico inputs de formulario de registro
+$("#next_button").click(function(){
+    if(checkNotEmpty()) {
+        $("#nombre").hide();
+        $("#apellido").hide();
+        $("#tlf").hide();
+        $("#grado").hide();
+        $("#next_button").hide();
+        $("#email").show();
+        $("#password").show();
+        $("#re_password").show();
+        $("#register_button").show();
+    } else {
+        alert("Por favor, rellene todos los campos.");
+    }
+})
+
+// Comprueba que los campos del formulario no estén vacíos
+function checkNotEmpty() {
+    const nombre = document.getElementById("nombre").value;
+    const apellido = document.getElementById("apellido").value;
+    const email = document.getElementById("email").value;
+    const tlf = document.getElementById("tlf").value;
+    return nombre !== "" && apellido !== "" && email !== "" && tlf !== "" && !($("#grado")[0].selectedIndex <= 0);
+}
+
 // Validación del formato del email (@ikasle.ehu.eus)
 function validateEmail() {
     const email = document.getElementById("reg_email");

@@ -11,11 +11,10 @@
     <section class="bottom"></section>
     <section class="center">
         <form id="register_form" method="post" th:action="@{/register}" th:object="${user}" onsubmit="return validatePassword()">
-            <input type="text" placeholder="Nombre" th:field="*{nombre}" required />
-            <input type="text" placeholder="Apellido" th:field="*{apellido}" required />
-            <input type="email" th:field="*{email}" th:value="${user.email}" required />
-            <input type="password" id="password" placeholder="Contraseña" th:field="*{password}" required/>
-            <input type="password" id="re_password" placeholder="Confirma la contraseña" required/>
+            <h1><img class="logo" src="img/logo.png" alt="Logo"></h1>
+            <input type="text" id="nombre" placeholder="Nombre" th:field="*{nombre}" required />
+            <input type="text" id="apellido" placeholder="Apellido" th:field="*{apellido}" required />
+            <input type="text" id="tlf" placeholder="Tlf: 123-456-789" pattern="[678][0-9]{2}-[0-9]{3}-[0-9]{3}" th:field="*{tlf}" required/>
             <select name="grado" id="grado" th:field="*{grado}" required>
                 <option selected th:value="0" disabled>- Selecciona un grado -</option>
                 <option th:each="grado : ${grados}"
@@ -23,7 +22,11 @@
                         th:text="${grado.nombre}">
                 </option>
             </select>
-            <button id="register_button" type="submit">Registrarse</button>
+            <input type="email" id="email" th:field="*{email}" th:value="${user.email}" hidden required />
+            <input type="password" id="password" placeholder="Contraseña" th:field="*{password}" hidden required/>
+            <input type="password" id="re_password" placeholder="Confirme la contraseña" hidden required/>
+            <button id="next_button" type="button">Siguiente</button>
+            <button id="register_button" type="submit" hidden>Registrarse</button>
         </form>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/form.js"> </script>
