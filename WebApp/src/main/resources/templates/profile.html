@@ -23,8 +23,10 @@
       <hr>
       <p><span class="data-label">Teléfono: </span><span th:text="${user.tlf}"></span></p>
       <hr>
-      <!-- TODO: Replace Data for requested one -->
-      <p><span class="data-label">Grado: </span>Teleco</p>
+      <p><span class="data-label">Grado: </span>
+        <span th:if="${user.grado} != null" th:text="${user.grado.nombre}"></span>
+        <span th:unless="${user.grado} != null">Ningún grado seleccionado</span>
+      </p>
       <hr>
       <button id="edit-btn" type="submit">Editar perfil</button>
     </form>
