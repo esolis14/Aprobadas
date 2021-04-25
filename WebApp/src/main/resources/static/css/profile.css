@@ -81,16 +81,15 @@
 .form-control {
     margin-bottom: 20px;
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid black;
 }
 
 select {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     border-radius: 0;
     border: 1px solid black;
-    color: gray;
 }
 
 #save_button {
