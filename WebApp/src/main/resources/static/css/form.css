@@ -69,6 +69,7 @@ h1  {
 
 .error_message { color: #CA202A; font-weight: bold;}
 .ok_message { color: darkgreen;}
+.info_message { color: dimgray; font-size: 0.7em; margin-left: 10%; margin-right: 10%;}
 
 button {
     text-transform: uppercase;

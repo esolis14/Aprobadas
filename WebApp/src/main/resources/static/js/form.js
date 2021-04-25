@@ -19,6 +19,7 @@ $("#next_button").click(function(){
         $("#tlf").hide();
         $("#grado").hide();
         $("#next_button").hide();
+        $(".info_message").show();
         $("#email").show();
         $("#password").show();
         $("#re_password").show();

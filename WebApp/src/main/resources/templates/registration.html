@@ -23,8 +23,9 @@
                 </option>
             </select>
             <input type="email" id="email" th:field="*{email}" th:value="${user.email}" hidden required />
-            <input type="password" id="password" placeholder="Contraseña" th:field="*{password}" hidden required/>
-            <input type="password" id="re_password" placeholder="Confirme la contraseña" hidden required/>
+            <input type="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$" placeholder="Contraseña" th:field="*{password}" hidden required/>
+            <input type="password" id="re_password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$" placeholder="Confirme la contraseña" hidden required/>
+            <p class="info_message" hidden>La contraseña debe contener al menos 8 caracteres, 1 letra minúscula, 1 mayúscula, 1 número y 1 símbolo.</p>
             <button id="next_button" type="button">Siguiente</button>
             <button id="register_button" type="submit" hidden>Registrarse</button>
         </form>
