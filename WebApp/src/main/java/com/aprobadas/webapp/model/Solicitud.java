@@ -23,9 +23,9 @@ public class Solicitud implements Serializable {
     @Column(name = "valoracion")
     private int valoracion;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     private Oferta oferta;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     private User user;
 }

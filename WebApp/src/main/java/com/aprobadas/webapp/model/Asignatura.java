@@ -23,6 +23,6 @@ public class Asignatura implements Serializable {
     @Column(name = "curso")
     private int curso;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     private Grado grado;
 }

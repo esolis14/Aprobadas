@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/css/**","/img/**","/js/**").permitAll()
                 .antMatchers("/","/index", "/email", "/sendCode", "/code", "/checkCode", "/registration", "/register").permitAll()
                 .antMatchers("/admin*").access("hasRole('ADMIN')")
-                .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
+                .antMatchers("/user*", "/clases*").access("hasRole('USER') or hasRole('ADMIN')")
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()// Personaliza el proceso de inicio de sesión

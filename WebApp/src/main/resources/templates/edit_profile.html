@@ -2,15 +2,16 @@
 <html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>aprobadas - Student Profile</title>
-    <link rel="stylesheet" type="text/css" href="css/profile.css">
+    <title>aprobadas - User Profile</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/templates.css}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <section th:insert="base"></section>
-<section class="profile">
-    <article class="profile-cover"></article>
-    <article class="profile-data">
+<main>
+    <article class="cover profile-cover"></article>
+    <article class="data">
         <form class="profile-form flex-column-center shadow" method="post" th:action="@{/updateUser}" th:object="${user}">
             <h2>Aquí puedes editar tus datos</h2>
             <div class="form-name-surname">
@@ -30,6 +31,6 @@
             <button id="save_button" type="submit">Guardar Datos</button>
         </form>
     </article>
-</section>
+</main>
 </body>
 </html>

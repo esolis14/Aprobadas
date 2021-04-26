@@ -2,16 +2,16 @@
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>aprobadas - Student Profile</title>
-  <link rel="stylesheet" type="text/css" href="css/profile.css">
-  <link rel="stylesheet" type="text/css" href="css/templates.css">
+  <title>aprobadas - User Profile</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/templates.css}">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <section th:insert="base"></section>
-<section class="profile">
-  <article class="profile-cover"></article>
-  <article class="profile-data">
+<main>
+  <article class="cover profile-cover"></article>
+  <article class="data">
     <h1>Tus Datos</h1>
     <form class="user-data shadow" method="post" th:action="@{/edit}" th:object="${user}">
       <div class="profile-name-surname">
@@ -28,9 +28,9 @@
         <span th:unless="${user.grado} != null">Ningún grado seleccionado</span>
       </p>
       <hr>
-      <button id="edit-btn" type="submit">Editar perfil</button>
+      <button id="edit_btn" type="submit">Editar perfil</button>
     </form>
   </article>
-</section>
+</main>
 </body>
 </html>
