@@ -1,6 +1,7 @@
 package com.aprobadas.webapp.controller;
 
 import com.aprobadas.webapp.model.User;
+import com.aprobadas.webapp.service.GradoService;
 import com.aprobadas.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,12 @@ public class AppController {
 
     @Autowired
     private final UserService userService;
+    @Autowired
+    private final GradoService gradoService;
 
-    public AppController(UserService userService) {
+    public AppController(UserService userService, GradoService gradoService) {
         this.userService = userService;
+        this.gradoService = gradoService;
     }
 
     @GetMapping("/home")
@@ -40,6 +44,7 @@ public class AppController {
     @PostMapping("/edit")
     public String editProfile(Model model, Principal principal) {
         model.addAttribute("user", userService.getUserByEmail(principal.getName()));
+        model.addAttribute("grados", gradoService.getAllGrados());
         return "edit_profile";
     }
 

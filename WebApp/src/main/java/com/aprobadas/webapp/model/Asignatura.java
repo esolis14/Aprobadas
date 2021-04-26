@@ -15,7 +15,7 @@ public class Asignatura implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "nombre")
     private String nombre;

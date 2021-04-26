@@ -29,6 +29,8 @@ h1  {
 }
 .logo { width: 35%;}
 
+#register_form.logo { width: 30%}
+
 .center {
     position: absolute;
     width: 400px;
@@ -52,16 +54,22 @@ h1  {
     border: 1px solid #ccc;
 }
 
-form#register_form {
-    margin-top: 90px;
-}
-form#register_form input {
-    width: 70%;
-    padding: 8px;
+#register_form input, select {
+    width: 80%;
+    padding: 10px;
+    font-size: 0.9em;
+    margin: 5px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
 }
 
-.error_message { color: #CA202A;}
+#register_form button {
+    padding: 12px 30px;
+}
+
+.error_message { color: #CA202A; font-weight: bold;}
 .ok_message { color: darkgreen;}
+.info_message { color: dimgray; font-size: 0.7em; margin-left: 10%; margin-right: 10%;}
 
 button {
     text-transform: uppercase;
