@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class FormController {
 
-    @Autowired
     private final UserService userService;
-
-    @Autowired
-    private GradoService gradoService;
+    private final GradoService gradoService;
 
     @GetMapping({"/","/login"})
     public String showLogin(Model model) {

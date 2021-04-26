@@ -23,9 +23,9 @@ public class Oferta implements Serializable {
     @Column(name = "precio")
     private float precio;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     private Asignatura asignatura;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     private User profesor;
 }

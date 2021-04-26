@@ -37,7 +37,7 @@ public class User implements Serializable {
     @Column(name = "code")
     private String code;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Grado grado;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
