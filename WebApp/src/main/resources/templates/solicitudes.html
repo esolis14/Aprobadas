@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
-  <title>aprobadas - Mis Anuncios</title>
+  <title>aprobadas - Mis Solicitudes</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/templates.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/clases.css}">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,25 +12,24 @@
 <main>
   <article class="cover home-cover"></article>
   <article class="data clases-data">
-    <h1>MIS OFERTAS</h1>
-    <p th:if="${msg}" class="error_message">Todavía no has publicado ninguna oferta.</p>
+    <h1>MIS SOLICITUDES</h1>
+    <p th:if="${msg}" class="error_message">Todavía no has solicitado ninguna clase.</p>
     <table class="clases" th:unless="${msg}">
       <tr>
+        <th>Profesor</th>
         <th>Descripción</th>
         <th>Precio</th>
         <th>Asignatura</th>
         <th>Eliminar</th>
       </tr>
-      <tr th:each="oferta : ${ofertas}">
-        <td th:text="${oferta.descripcion}"></td>
-        <td th:text="${oferta.precio + ' €'}"></td>
-        <td th:text="${oferta.asignatura.nombre}"></td>
-        <td><a th:href="@{/clases/eliminarOferta/{id}(id = ${oferta.id})}">Eliminar</a></td>
+      <tr th:each="solicitud : ${solicitudes}">
+        <td th:text="${solicitud.oferta.profesor.nombre + ' ' + solicitud.oferta.profesor.apellido}"></td>
+        <td th:text="${solicitud.oferta.descripcion}"></td>
+        <td th:text="${solicitud.oferta.precio + ' €'}"></td>
+        <td th:text="${solicitud.oferta.asignatura.nombre}"></td>
+        <td><a th:href="@{/clases/aceptarSolicitud/{id}(id = ${solicitud.id})}">Aceptar</a></td>
       </tr>
     </table>
-    <form th:action="@{/clases/nuevoAnuncio}" method="post">
-      <button type="submit">Nueva oferta</button>
-    </form>
   </article>
 </main>
 </body>

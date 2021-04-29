@@ -1,10 +1,9 @@
 package com.aprobadas.webapp.controller;
 
 import com.aprobadas.webapp.model.User;
-import com.aprobadas.webapp.service.GradoService;
+import com.aprobadas.webapp.service.AsignaturasService;
 import com.aprobadas.webapp.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class FormController {
 
     private final UserService userService;
-    private final GradoService gradoService;
+    private final AsignaturasService asignaturasService;
 
     @GetMapping({"/","/login"})
     public String showLogin(Model model) {
@@ -40,7 +39,7 @@ public class FormController {
     public String checkCode(@ModelAttribute("user") User user, Model model) {
         if(userService.checkCode(user)) {
             model.addAttribute("user", user);
-            model.addAttribute("grados", gradoService.getAllGrados());
+            model.addAttribute("grados", asignaturasService.getAllGrados());
             return "registration";
         } else {
             user.setCode(null);

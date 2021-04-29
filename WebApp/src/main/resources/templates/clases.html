@@ -27,7 +27,7 @@
                 <td th:text="${clase.precio + ' €'}"></td>
                 <td th:text="${clase.asignatura.nombre}"></td>
                 <td th:text="${clase.profesor.nombre + ' ' + clase.profesor.apellido}"></td>
-                <td><a th:href="${'/clases/solicitar/' + clase.id}">Solicitar</a></td>
+                <td><a th:href="@{/clases/solicitarClase/{id}(id = ${clase.id})}">Solicitar</a></td>
             </tr>
         </table>
     </article>

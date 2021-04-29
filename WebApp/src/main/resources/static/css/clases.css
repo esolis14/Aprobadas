@@ -25,3 +25,14 @@ tr:hover {background-color: #ddd;}
 
 table a { color: #083b5f;}
 table a:hover { text-decoration: underline;}
+
+.form-oferta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-oferta span {
+    margin-block-end: 10px;
+}

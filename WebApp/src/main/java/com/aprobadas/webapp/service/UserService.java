@@ -43,7 +43,6 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(appUser.getEmail(), appUser.getPassword(), grantList);
     }
 
-    // Pendiente de eliminar
     public boolean existsUserByEmail(User user) {
         return userRepository.findByEmail(user.getEmail()).isPresent();
     }
@@ -85,7 +84,7 @@ public class UserService implements UserDetailsService {
         // Se envía email con código de verificación
         try {
             SendEmail email = new SendEmail();
-            email.send(newUser.getEmail(), code);
+            email.sendCode(newUser.getEmail(), code);
         } catch(RuntimeException re) {
             re.printStackTrace();
         }

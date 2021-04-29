@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface OfertaRepository extends JpaRepository<Oferta, Integer> {
-    List<Oferta> findOfertaByProfesor(User profesor);
+    List<Oferta> findOfertasByProfesor(User profesor);
 }

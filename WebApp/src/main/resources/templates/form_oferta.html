@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>aprobadas - Nueva Oferta</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/templates.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/clases.css}">
+  <!--- TODO: Añadir estilo para formulario oferta -->
+  <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section th:insert="base"></section>
+<main>
+  <article class="cover home-cover"></article>
+  <article class="data clases-data">
+    <form class="profile-form flex-column-center shadow" method="post" th:action="@{/clases/createOferta}" th:object="${oferta}">
+      <h2>NUEVO ANUNCIO</h2>
+      <div class="form-oferta">
+        <span class="data-label center">Descripción: </span><input class="form-control" type="text" name="descrip" th:field="*{descripcion}" required>
+        <span class="data-label center">Precio: </span><input class="form-control" type="number" name="precio" th:field="*{precio}" required/>
+        <span class="data-label center">Asignatura: </span><select name="asignatura" id="asignaturas" th:field="*{asignatura}">
+          <option th:each="asignatura : ${asignaturas}"
+                  th:value="${asignatura.id}"
+                  th:text="${asignatura.nombre}">
+          </option>
+        </select>
+      </div>
+      <button id="save_button" type="submit">Crear Oferta</button>
+    </form>
+  </article>
+</main>
+</body>
+</html>
