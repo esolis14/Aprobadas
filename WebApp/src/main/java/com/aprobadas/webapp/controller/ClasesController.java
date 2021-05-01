@@ -44,7 +44,7 @@ public class ClasesController {
         } else {
             model.addAttribute("msg",true);
         }
-        return "ofertas";
+        return "anuncios";
     }
 
     @GetMapping("/misSolicitudes")

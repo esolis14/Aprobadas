@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
+<html lang="es" style="font-size: 16px;">
   <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta charset="utf-8">
-      <title>clases</title>
+      <meta charset="UTF-8">
+      <title>anuncios</title>
       <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
-      <link rel="stylesheet" th:href="@{/css/clases.css}" media="screen">
+      <link rel="stylesheet" th:href="@{/css/anuncios.css}" media="screen">
       <script class="u-script" type="text/javascript" th:src="@{/js/jquery-1.9.1.min.js}" defer=""></script>
       <script class="u-script" type="text/javascript" th:src="@{/js/nicepage.js}" defer=""></script>
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Gravitas+One:400">
-    <link rel="canonical" href="index.html">
+      <script th:src="@{/js/general.js}"></script>
+      <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+      <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gravitas+One:400">
+      <link rel="canonical" href="index.html">
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-sticky u-white u-header" id="sec-85c8"><div class="u-clearfix u-sheet u-sheet-1">
       <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="XL">
@@ -23,7 +24,7 @@
           </div>
           <div class="u-custom-menu u-nav-container">
               <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
-                  <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="home.html" style="padding: 10px 20px;">Home</a></li>
+                  <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/home}" style="padding: 10px 20px;">Home</a></li>
                   <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/user/perfil}" style="padding: 10px 20px;">Mi Perfil</a></li>
                   <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/clases/misAnuncios}" style="padding: 10px 20px;">Mis Anuncios</a></li>
                   <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" style="padding: 10px 20px;">Mis Alumnos</a></li>
@@ -38,9 +39,9 @@
                       <ul class="u-align-center u-nav u-popupmenu-items u-spacing-40 u-text-active-grey-75 u-text-hover-palette-1-dark-2 u-unstyled u-nav-2">
                           <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/home}" style="padding: 10px 20px;">Home</a></li>
                           <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/user/perfil}" style="padding: 10px 20px;">Mi Perfil</a></li>
-                          <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/clases/misAnuncios}" style="padding: 10px 20px;">Mis Anuncios</a></li>
+                          <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{clases/misAnuncios}" style="padding: 10px 20px;">Mis Anuncios</a></li>
                           <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 20px;">Mis Alumnos</a></li>
-                          <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/clases/viewAll}" style="padding: 10px 20px;">Buscar Clases</a></li>
+                          <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{clases/viewAll}" style="padding: 10px 20px;">Buscar Clases</a></li>
                           <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 20px;">Mis Clases</a></li>
                       </ul>
                   </div>
@@ -51,96 +52,88 @@
       </nav>
         <a href="https://nicepage.com/static-site-generator" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-light-1 u-white u-btn-1">CAMBIAR VISTA<br>
         </a>
-        <div alt="" class="u-image u-image-circle u-image-2" data-image-width="692" data-image-height="689"></div>
+        <div class="u-image u-image-circle u-image-2" data-image-width="692" data-image-height="689"></div>
         <a href="https://nicepage.com/static-site-generator" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-palette-1-light-1 u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-2">CERRAR SESIÓN</a>
       </div></header>
-    <section class="u-align-center u-clearfix u-gradient u-section-1" id="carousel_2dd3">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-custom-font u-font-oswald u-text u-text-1">OFERTAS DE CLASES&nbsp;</h1>
-        <div class="u-expanded-width u-list u-list-1">
-          <div class="u-repeater u-repeater-1">
-            <div class="u-container-style u-list-item u-radius-16 u-repeater-item u-shape-round u-white u-list-item-1">
-              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-1">
-                <h4 class="u-align-center u-custom-font u-font-montserrat u-text u-text-palette-1-dark-1 u-text-2">CALCULO II<br>
-                </h4>
-                <img alt="" class="u-expanded-width u-image u-image-default u-image-1" th:src="@{/img/industrial.jpg}" data-image-width="600" data-image-height="400">
-                <p class="u-align-center u-text u-text-3">GRADO EN INGENIERÍA EN TECNOLOGÍA INDUSTRIAL</p>
-                <ul class="u-align-left u-custom-list u-text u-text-4">
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Nombre profesor
-                  </li>
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Primer Curso
-                  </li>
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Precio: 0€
-                  </li>
-                </ul>
-                <a href="https://nicepage.com/" class="u-active-palette-1-dark-1 u-btn u-btn-round u-button-style u-hover-palette-1-base u-palette-1-light-1 u-radius-50 u-btn-1">solicitar</a>
-              </div>
+    <section class="u-align-center u-clearfix u-valign-middle-xs u-section-1" id="carousel_2e21">
+      <div class="u-align-center u-container-style u-expanded-width u-group u-palette-1-light-1 u-shape-rectangle u-group-1">
+        <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-container-layout-1">
+          <h2 class="u-text u-text-body-alt-color u-text-1">MIS ANUNCIOS</h2>
+        </div>
+      </div>
+      <div class="u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          <div class="u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-1">
+            <div class="u-container-layout u-similar-container u-container-layout-2">
+              <h5 class="u-text u-text-2">ASIGNATURA</h5>
+              <a href="https://nicepage.com/c/table-website-templates" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-light-2 u-none u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1">BELIMINAR</a>
+              <h5 class="u-text u-text-3">grado en ingeniería industrial</h5>
+              <p class="u-align-justify u-text u-text-4">Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;</p>
+              <p class="u-text u-text-5">PRECIO: 0€</p>
             </div>
-            <div class="u-container-style u-list-item u-radius-16 u-repeater-item u-shape-round u-video-cover u-white u-list-item-2">
-              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-2">
-                <h4 class="u-align-center u-custom-font u-font-montserrat u-text u-text-palette-1-dark-1 u-text-5">ANÁLISIS DE CIRCUITOS</h4>
-                <img alt="" class="u-expanded-width u-image u-image-default u-image-2" th:src="@{/img/teleco.jpg}" data-image-width="780" data-image-height="405">
-                <p class="u-align-center u-text u-text-6">GRADO EN INGENIERÍA DE TELECOMUNICACIONES</p>
-                <ul class="u-align-left u-custom-list u-text u-text-7">
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Nombre profesor
-                  </li>
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Primer Curso
-                  </li>
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Precio: 0€<br>
-                  </li>
-                </ul>
-                <a href="https://nicepage.com/c/technology-html-templates" class="u-active-palette-1-dark-1 u-btn u-btn-round u-button-style u-hover-palette-1-base u-palette-1-light-1 u-radius-50 u-btn-2">solicitar</a>
-              </div>
+          </div>
+          <div class="u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-2">
+            <div class="u-container-layout u-similar-container u-container-layout-3">
+              <h5 class="u-text u-text-6">ASIGNATURA</h5>
+              <a href="https://nicepage.com/c/table-website-templates" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-light-2 u-none u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-2">Botón</a>
+              <h5 class="u-text u-text-7">grado en ingeniería industrial</h5>
+              <p class="u-align-justify u-text u-text-8">Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;<br>
+              </p>
+              <p class="u-text u-text-9">PRECIO: 0€<br>
+              </p>
             </div>
-            <div class="u-container-style u-list-item u-radius-16 u-repeater-item u-shape-round u-video-cover u-white u-list-item-3">
-              <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-3">
-                <h4 class="u-align-center u-custom-font u-font-montserrat u-text u-text-palette-1-dark-1 u-text-8">electrónica</h4>
-                <img alt="" class="u-expanded-width u-image u-image-default u-image-3" th:src="@{/img/industrial.jpg}" data-image-width="600" data-image-height="400">
-                <p class="u-align-center u-text u-text-9">GRADO EN INGENIERÍA EN TECNOLOGÍA INDUSTRIAL</p>
-                <ul class="u-align-left u-custom-list u-text u-text-10">
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Nombre profesor
-                  </li>
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Primer Curso
-                  </li>
-                  <li>
-                    <div class="u-list-icon">
-                      <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">●</div>
-                    </div>Precio: 0€
-                  </li>
-                </ul>
-                <a href="https://nicepage.com/es/plantillas-joomla" class="u-active-palette-1-dark-1 u-btn u-btn-round u-button-style u-hover-palette-1-base u-palette-1-light-1 u-radius-50 u-btn-3">solicitar</a>
-              </div>
+          </div>
+          <div class="u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-3">
+            <div class="u-container-layout u-similar-container u-container-layout-4">
+              <h5 class="u-text u-text-10">ASIGNATURA</h5>
+              <a href="https://nicepage.com/c/table-website-templates" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-light-2 u-none u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-3">Botón</a>
+              <h5 class="u-text u-text-11">ASIGNATURA</h5>
+              <p class="u-align-justify u-text u-text-12">Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;Descripción. Descripción.&nbsp;<br>
+              </p>
+              <p class="u-text u-text-13">PRECIO: 0€<br>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    
+    <section class="u-clearfix u-section-2" id="sec-d063">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <button id="mostrarForm-button" onclick="mostrarForm()" class="u-active-palette-1-dark-1 u-btn u-btn-round u-button-style u-hover-palette-1-base u-palette-1-light-1 u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-1">crear nuevo anuncio</button>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-grey-5 u-section-3" id="sec-0673" style="display: none">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-text u-text-1">Nuevo Anuncio </h1>
+        <div class="u-form u-form-1">
+          <form action="#" method="POST" class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" style="padding: 10px;" name="form">
+            <input type="hidden" id="siteId" name="siteId" value="358809">
+            <input type="hidden" id="pageId" name="pageId" value="366593">
+            <div class="u-form-group u-form-name">
+              <label for="name-3b9a" class="u-form-control-hidden u-label">Name</label>
+              <input type="text" placeholder="ASIGNATURA" id="name-3b9a" name="asignatura" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-1" required="">
+            </div>
+            <div class="u-form-email u-form-group">
+              <label for="email-3b9a" class="u-form-control-hidden u-label">Email</label>
+              <input type="email" placeholder="PRECIO" id="email-3b9a" name="precio" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-2" required="">
+            </div>
+            <div class="u-form-group u-form-message">
+              <label for="message-3b9a" class="u-form-control-hidden u-label">Message</label>
+              <textarea placeholder="DESCRIPCIÓN" rows="4" cols="50" id="message-3b9a" name="descripción" class="u-border-2 u-border-black u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input-3" required=""></textarea>
+            </div>
+            <div class="u-align-center u-form-group u-form-submit">
+                <button type="button" class="u-border-2 u-border-black u-btn u-btn-round u-btn-submit u-button-style u-none u-radius-50 u-btn-1">PUBLICAR</button>
+              <!---<a href="#" class="u-border-2 u-border-black u-btn u-btn-round u-btn-submit u-button-style u-none u-radius-50 u-btn-1">PUBLICAR</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">--->
+            </div>
+            <div class="u-form-send-message u-form-send-success">Tu anuncio ha sido publicado.</div>
+            <div class="u-form-send-error u-form-send-message">Lo sentimos. No se ha podido crear el anuncio. Por favor, pruebe más tarde.</div>
+            <input type="hidden" value="" name="recaptchaResponse">
+          </form>
+        </div>
+      </div>
+    </section>
+
     <footer class="u-align-center u-clearfix u-footer u-palette-5-dark-1 u-footer" id="sec-266b"><div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
         <div class="u-align-left u-social-icons u-spacing-10 u-social-icons-1">
           <a class="u-social-url" target="_blank" href=""><span class="u-icon u-icon-circle u-social-facebook u-social-icon u-icon-1">
@@ -167,16 +160,5 @@
         <h5 class="u-custom-font u-text u-text-1">aprobad​as</h5>
         <p class="u-small-text u-text u-text-variant u-text-2">© 2021. All Rights Reserved.</p>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/templates" target="_blank">
-        <span>Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.com/website-builder" target="_blank">
-        <span>Best Website Builder</span>
-      </a>. 
-    </section>
   </body>
 </html>
