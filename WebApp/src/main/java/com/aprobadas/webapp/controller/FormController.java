@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/form")
 public class FormController {
 
     private final UserService userService;
     private final AsignaturasService asignaturasService;
 
-    @GetMapping({"/","/login"})
+    @GetMapping("/login")
     public String showLogin(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("emailError", false);

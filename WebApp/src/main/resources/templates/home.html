@@ -23,12 +23,12 @@
       </div>
       <div class="u-custom-menu u-nav-container">
         <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
-          <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" href="home.html" style="padding: 10px 20px;">Home</a></li>
+          <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/home}" style="padding: 10px 20px;">Home</a></li>
           <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/user/perfil}" style="padding: 10px 20px;">Mi Perfil</a></li>
           <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/clases/misAnuncios}" style="padding: 10px 20px;">Mis Anuncios</a></li>
-          <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" style="padding: 10px 20px;">Mis Alumnos</a></li>
           <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/clases/viewAll}" style="padding: 10px 20px;">Buscar Clases</a></li>
-          <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" style="padding: 10px 20px;">Mis Clases</a></li>
+          <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/clases/misSolicitudes}" style="padding: 10px 20px;">Mis Alumnos</a></li>
+          <li class="u-nav-item"><a class="u-active-grey-5 u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90" th:href="@{/clases/misSolicitudes}" style="padding: 10px 20px;">Mis Profesores</a></li>
         </ul>
       </div>
       <div class="u-custom-menu u-nav-container-collapse">
@@ -36,12 +36,12 @@
           <div class="u-sidenav-overflow">
             <div class="u-menu-close"></div>
             <ul class="u-align-center u-nav u-popupmenu-items u-spacing-40 u-text-active-grey-75 u-text-hover-palette-1-dark-2 u-unstyled u-nav-2">
-              <li class="u-nav-item"><a class="u-button-style u-nav-link" href="home.html" style="padding: 10px 20px;">Home</a></li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/home}" style="padding: 10px 20px;">Home</a></li>
               <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/user/perfil}" style="padding: 10px 20px;">Mi Perfil</a></li>
               <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/clases/misAnuncios}" style="padding: 10px 20px;">Mis Anuncios</a></li>
-              <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 20px;">Mis Alumnos</a></li>
               <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/clases/viewAll}" style="padding: 10px 20px;">Buscar Clases</a></li>
-              <li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 20px;">Mis Clases</a></li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/clases/misSolicitudes}" style="padding: 10px 20px;">Mis Alumnos</a></li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/clases/misSolicitudes}" style="padding: 10px 20px;">Mis Profesores</a></li>
             </ul>
           </div>
           <div class="u-image u-image-circle u-image-1" data-image-width="692" data-image-height="689"></div>
@@ -65,7 +65,7 @@
                   <br>
                 </h1>
                 <p class="u-text u-text-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a href="https://nicepage.com/templates" class="u-active-palette-1-light-3 u-btn u-btn-round u-button-style u-custom-font u-font-pt-sans u-hover-palette-1-dark-1 u-radius-50 u-text-black u-text-hover-white u-white u-btn-1">INICIAR SESIÓN</a>
+                <a th:href="@{/form/login}" class="u-active-palette-1-light-3 u-btn u-btn-round u-button-style u-custom-font u-font-pt-sans u-hover-palette-1-dark-1 u-radius-50 u-text-black u-text-hover-white u-white u-btn-1">INICIAR SESIÓN</a>
               </div>
             </div>
             <div class="u-align-right u-container-style u-layout-cell u-palette-1-light-1 u-size-31 u-layout-cell-2">

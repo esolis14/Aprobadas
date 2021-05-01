@@ -12,4 +12,10 @@ public class AppController {
     public String showHome() {
         return "home";
     }
+
+    @GetMapping("/")
+    public String showInit() {
+        return "home";
+    }
+
 }
