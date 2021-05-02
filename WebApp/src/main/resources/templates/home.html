@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
+<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" style="font-size: 16px;">
   <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta charset="UTF-8">
@@ -12,12 +12,13 @@
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Oswald:200,300,400,500,600,700|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Archivo+Black:400|Gravitas+One:400">
     <link rel="canonical" href="index.html">
   </head>
-  <body class="u-body"><header class="u-clearfix u-header u-sticky u-white u-header" id="sec-85c8"><div class="u-clearfix u-sheet u-sheet-1">
+  <body class="u-body">
+  <header class="u-clearfix u-header u-sticky u-white u-header" id="sec-85c8"><div class="u-clearfix u-sheet u-sheet-1">
     <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="XL">
       <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0; font-weight: 500;">
         <a class="u-button-style u-custom-active-border-color u-custom-active-color u-custom-border u-custom-border-color u-custom-borders u-custom-color u-custom-hover-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-light-1" href="#" style="background-image: none;">
           <svg><use xlink:href="#menu-hamburger"></use></svg>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="menu-hamburger" viewBox="0 0 16 16" style="width: 16px; height: 16px;"><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
           </symbol></defs></svg>
         </a>
       </div>
@@ -49,11 +50,16 @@
         <div class="u-menu-overlay"></div>
       </div>
     </nav>
-        <a href="https://nicepage.com/static-site-generator" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-light-1 u-white u-btn-1">CAMBIAR VISTA<br>
-        </a>
-        <div alt="" class="u-image u-image-circle u-image-2" data-image-width="692" data-image-height="689"></div>
-        <a href="https://nicepage.com/static-site-generator" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-palette-1-light-1 u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-2">CERRAR SESIÓN</a>
-      </div></header>
+      <form sec:authorize="isAuthenticated()" th:action="@{/cambiarVista}" method="POST">
+        <button type="submit" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-light-1 u-white u-btn-1">CAMBIAR VISTA<br></button>
+      </form>
+    <div class="u-image u-image-circle u-image-2" data-image-width="692" data-image-height="689"></div>
+    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+        <button type="submit" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-palette-1-light-1 u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-2">CERRAR SESIÓN</button>
+    </form>
+  </div>
+  </header>
+
     <section class="u-clearfix u-palette-1-light-1 u-valign-middle u-section-1" id="sec-832e">
       <div class="u-clearfix u-layout-wrap u-palette-1-light-1 u-layout-wrap-1">
         <div class="u-gutter-0 u-layout">
@@ -65,12 +71,12 @@
                   <br>
                 </h1>
                 <p class="u-text u-text-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a th:href="@{/form/login}" class="u-active-palette-1-light-3 u-btn u-btn-round u-button-style u-custom-font u-font-pt-sans u-hover-palette-1-dark-1 u-radius-50 u-text-black u-text-hover-white u-white u-btn-1">INICIAR SESIÓN</a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="u-active-palette-1-light-3 u-btn u-btn-round u-button-style u-custom-font u-font-pt-sans u-hover-palette-1-dark-1 u-radius-50 u-text-black u-text-hover-white u-white u-btn-1">INICIAR SESIÓN</a>
               </div>
             </div>
             <div class="u-align-right u-container-style u-layout-cell u-palette-1-light-1 u-size-31 u-layout-cell-2">
               <div class="u-container-layout u-container-layout-2">
-                <div alt="" class="u-image u-image-circle u-image-1" data-image-width="692" data-image-height="689"></div>
+                <div class="u-image u-image-circle u-image-1" data-image-width="692" data-image-height="689"></div>
               </div>
             </div>
           </div>
@@ -104,6 +110,7 @@
         </div>
       </div>
     </section>
+
     <section class="u-align-center u-clearfix u-section-3" id="carousel_1c1c">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-shape u-shape-svg u-text-palette-1-light-1 u-shape-1">
@@ -123,7 +130,7 @@
                 </div>
                 <h5 class="u-text u-text-4">Estudiantes</h5>
                 <p class="u-text u-text-5">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                <a href="https://nicepage.com/k/announcement-html-templates" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-1">HBuscar clases</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/clases/viewAll}" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-1">Buscar clases</a>
               </div>
             </div>
             <div class="u-align-left u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-2">
@@ -136,7 +143,7 @@
                 <h5 class="u-text u-text-7">Profesores<br>
                 </h5>
                 <p class="u-text u-text-8">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                <a href="https://nicepage.com/k/announcement-html-templates" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-2">HMis Anuncios</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/clases/misAnuncios}" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-2">Mis Anuncios</a>
               </div>
             </div>
             <div class="u-align-left u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-3">
@@ -148,7 +155,7 @@
                 </div>
                 <h5 class="u-text u-text-10">Recursos</h5>
                 <p class="u-text u-text-11">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                <a href="https://nicepage.com/k/announcement-html-templates" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-3">Hiperenlace</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/clases/viewAll}" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-3">Ofertas de clases</a>
               </div>
             </div>
             <div class="u-align-left u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-4">
@@ -160,13 +167,14 @@
                 </div>
                 <h5 class="u-text u-text-13">EHU/UPV</h5>
                 <p class="u-text u-text-14">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-                <a href="https://nicepage.com/k/announcement-html-templates" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-4">Hiperenlace</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/clases/viewAll}" class="u-active-none u-border-2 u-border-active-palette-1-dark-3 u-border-hover-palette-1-dark-2 u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-active-palette-5-dark-2 u-text-hover-palette-1-dark-1 u-text-palette-1-base u-btn-4">Ofertas de clases</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <section class="u-clearfix u-section-4" id="carousel_607d">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
@@ -193,20 +201,17 @@
     </section>
     <section class="u-align-center u-clearfix u-image u-shading u-section-5" id="carousel_89a0" data-image-width="800" data-image-height="404">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h2 class="u-custom-font u-font-montserrat u-text u-text-1">Contacta con ​nosotros</h2>
+        <h2 class="u-custom-font u-font-montserrat u-text u-text-1">Contacta con nosotros</h2>
         <div class="u-align-left u-form u-form-1">
-          <form action="https://nicepage.com/editor/Forms/Process" method="POST" class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" style="padding: 10px;" source="email" name="form">
-            <input type="hidden" id="siteId" name="siteId" value="358809">
-            <input type="hidden" id="pageId" name="pageId" value="358810">
-            <div class="u-align-center u-form-group u-form-submit">
-              <a href="#" class="u-active-grey-40 u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-5-base u-radius-50 u-text-active-white u-text-hover-white u-white u-btn-1">contactar<br>
+          <div class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" style="padding: 10px;" name="form">
+            <div class="u-align-center u-form-group">
+              <a href="mailto:noreplyaprobadas@gmail.com" class="u-active-grey-40 u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-5-base u-radius-50 u-text-active-white u-text-hover-white u-white u-btn-1">contactar<br>
               </a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
             <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
             <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
             <input type="hidden" value="" name="recaptchaResponse">
-          </form>
+          </div>
         </div>
       </div>
     </section>
@@ -236,6 +241,7 @@
         </div>
         <h5 class="u-custom-font u-text u-text-1">aprobadas</h5>
         <p class="u-small-text u-text u-text-variant u-text-2">© 2021. All Rights Reserved.</p>
-      </div></footer>
+      </div>
+    </footer>
   </body>
 </html>

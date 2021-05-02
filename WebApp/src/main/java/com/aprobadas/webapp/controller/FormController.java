@@ -16,13 +16,6 @@ public class FormController {
     private final UserService userService;
     private final AsignaturasService asignaturasService;
 
-    @GetMapping("/login")
-    public String showLogin(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("emailError", false);
-        return "login";
-    }
-
     @PostMapping("/sendCode")
     public String sendVerificationCode(@ModelAttribute("user") User user, Model model) {
         if(userService.existsUserByEmail(user)) {
