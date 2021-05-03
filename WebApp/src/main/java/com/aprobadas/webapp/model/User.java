@@ -10,6 +10,7 @@ import javax.persistence.*;
 // @Data incluye las anotaciones @ToString, @EqualsAndHashCode, @Getter, @Setter y @RequiredArgsConstructor
 @Data
 @Entity
+@Table(name = "user")
 @NoArgsConstructor
 public class User implements Serializable {
 
