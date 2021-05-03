@@ -24,17 +24,11 @@ public class UserController {
     @GetMapping("/perfil")
     public String showProfile(Model model, Principal principal) {
         model.addAttribute("user", userService.getUserByEmail(principal.getName()));
+        model.addAttribute("grados", asignaturasService.getAllGrados());
         return "perfil";
     }
 
-    @GetMapping("/editPerfil")
-    public String editProfile(Model model, Principal principal) {
-        model.addAttribute("user", userService.getUserByEmail(principal.getName()));
-        model.addAttribute("grados", asignaturasService.getAllGrados());
-        return "edit_profile";
-    }
-
-    @PostMapping("/updatePerfil")
+    @PostMapping("/updateUser")
     public String updateUser(@ModelAttribute User user) {
         userService.updateUser(user);
         return "redirect:/user/perfil";
