@@ -33510,7 +33510,7 @@ a.u-link.u-text-hover-grey-90:hover {
         @media (max-width: 767px) {
         h1.u-title
         {
-        font-size: 2.75rem;
+        font-size: 3.75rem;
         }
         }
         @media (max-width: 575px) {
@@ -33699,7 +33699,7 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-image-1 {
   width: 127px;
   height: 127px;
-  background-image: url("https://images01.nicepage.io/e946e43613bcf1e901a560a2/5fdb65d5c854543dbb193477/logo.png");
+  background-image: url("https://images01.nicepage.com/e946e43613bcf1e901a560a2/5fdb65d5c854543dbb193477/logo.png");
   background-position: 50% 50%;
   margin: 20px auto 0;
 }
@@ -33719,7 +33719,7 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-image-2 {
   width: 99px;
   height: 99px;
-  background-image: url("https://images01.nicepage.io/e946e43613bcf1e901a560a2/5fdb65d5c854543dbb193477/logo.png?version=");
+  background-image: url("https://images01.nicepage.com/e946e43613bcf1e901a560a2/5fdb65d5c854543dbb193477/logo.png?version=");
   background-position: 50% 50%;
   margin: -69px auto 0 62px;
 }

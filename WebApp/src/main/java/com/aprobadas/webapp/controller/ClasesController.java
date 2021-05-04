@@ -23,21 +23,29 @@ public class ClasesController {
     private final UserService userService;
     private final AsignaturasService asignaturasService;
 
+    // **************** VISUALIZAR ****************
+
+    // Todos los anuncios disponibles
     @GetMapping("/viewAll")
     public String showAllClases(Model model, Principal principal) {
         User sessionUser = userService.getUserByEmail(principal.getName());
         List<Oferta> clases = clasesService.getOfertasByGrado(sessionUser.getGrado());
+        model.addAttribute("asignaturas", asignaturasService.getAsignaturasByGrado(sessionUser.getGrado()));
+        // TODO: Repasar
         if(!clases.isEmpty()) {
             model.addAttribute("clases", clases);
         } else {
             model.addAttribute("msg",true);
         }
-        return "clases";
+        return "clases2";
     }
 
+    // Anuncios publicados por el usuario
     @GetMapping("/misAnuncios")
     public String showMisAnuncios(Model model, Principal principal) {
         User sessionUser = userService.getUserByEmail(principal.getName());
+        model.addAttribute("nuevaOferta", new Oferta());
+        model.addAttribute("asignaturas", asignaturasService.getAsignaturasByGrado(sessionUser.getGrado()));
         List<Oferta> ofertas = clasesService.getOfertasByProfesor(sessionUser);
         if(!ofertas.isEmpty()) {
             model.addAttribute("ofertas", ofertas);
@@ -47,6 +55,7 @@ public class ClasesController {
         return "anuncios";
     }
 
+    // Clases solicitadas por el usuario
     @GetMapping("/misSolicitudes")
     public String showMisSolicitudes(Model model, Principal principal) {
         User sessionUser = userService.getUserByEmail(principal.getName());
@@ -60,30 +69,20 @@ public class ClasesController {
     }
 
     // **************** OFERTAS ****************
-
-    @PostMapping("/nuevoAnuncio")
-    public String showOfertaForm(Model model, Principal principal) {
-        User sessionUser = userService.getUserByEmail(principal.getName());
-        model.addAttribute("oferta", new Oferta());
-        model.addAttribute("asignaturas", asignaturasService.getAsignaturasByGrado(sessionUser.getGrado()));
-        return "form_oferta";
-    }
-
-    @PostMapping("/createOferta")
+    @PostMapping("/createAnuncio")
     public String createOferta(@ModelAttribute("oferta") Oferta oferta, Principal principal) {
         oferta.setProfesor(userService.getUserByEmail(principal.getName()));
         clasesService.saveOferta(oferta);
         return "redirect:/clases/misAnuncios";
     }
 
-    @GetMapping("/eliminarOferta/{id}")
+    @GetMapping("/eliminarAnuncio/{id}")
     public String deleteOferta(@PathVariable("id") int id) {
         clasesService.deleteOfertaById(id);
         return "redirect:/clases/misAnuncios";
     }
 
     // **************** SOLICITUDES ****************
-
     @GetMapping("/solicitarClase/{id}")
     public String solicitarClase(@PathVariable("id") int id, Principal principal) {
         clasesService.createSolicitud(id, userService.getUserByEmail(principal.getName()));
