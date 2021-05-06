@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +45,14 @@ public class UserService implements UserDetailsService {
 
     public boolean existsUserByEmail(User user) {
         return userRepository.findByEmail(user.getEmail()).isPresent();
+    }
+
+    public User getUserById(int id) {
+        if(userRepository.findById(id).isPresent()) {
+            return userRepository.getOne(id);
+        } else {
+            throw new UsernameNotFoundException("No existe un usuario con ese email.");
+        }
     }
 
     public User getUserByEmail(String email) {

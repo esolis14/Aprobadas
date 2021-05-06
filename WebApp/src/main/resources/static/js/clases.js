@@ -5,5 +5,11 @@ function mostrarForm() {
 }
 
 function checkForm() {
-
+    const descrip = document.getElementById("message-3b9a").value;
+    if (descrip === "" || ($("#select-d846")[0].selectedIndex <= 0)) {
+        alert("Por favor rellena todos los campos");
+        return false;
+    } else {
+        return true;
+    }
 }

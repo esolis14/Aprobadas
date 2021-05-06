@@ -55,6 +55,7 @@ public class ClasesService {
     // ************ Funciones SOLICITUDES ************
 
     public List<Solicitud> getSolicitudesByAlumno(User user) { return solicitudRepository.findSolicitudsByUser(user); }
+    public List<Solicitud> getSolicitudesByProfesor(User user) { return solicitudRepository.findSolicitudByOferta_Profesor(user); }
 
     public void createSolicitud(int ofertaId, User user) {
         Oferta oferta = ofertaRepository.getOne(ofertaId);

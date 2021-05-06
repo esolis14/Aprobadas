@@ -16,16 +16,23 @@ public class FormController {
     private final UserService userService;
     private final AsignaturasService asignaturasService;
 
+    @GetMapping("/register")
+    public String showEmailForm(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("emailError", false);
+        return "register";
+    }
+
     @PostMapping("/sendCode")
     public String sendVerificationCode(@ModelAttribute("user") User user, Model model) {
         if(userService.existsUserByEmail(user)) {
             model.addAttribute("emailError", true);
-            return "login";
+            return "/login";
         } else {
             userService.sendCode(user);
             model.addAttribute("user", user);
             model.addAttribute("codeError", false);
-            return "/verification_code";
+            return "verification_code";
         }
     }
 
@@ -44,7 +51,7 @@ public class FormController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user, Model model) {
+    public String registerUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/login";
     }
