@@ -46,7 +46,7 @@
               <div class="u-form-select-wrapper">
                 <select id="select-636b" name="asignatura" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white u-input-2">
                   <option value="" selected disabled hidden>- Seleccione una asignatura -</option>
-                  <option th:each="i : ${asignaturas}" th:value="${i.id}" th:text="${i.nombre}">
+                  <option th:each="i : ${asignaturas.?[curso == cursoSelected]}" th:value="${i.id}" th:text="${i.nombre}">
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1.1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
               </div>
