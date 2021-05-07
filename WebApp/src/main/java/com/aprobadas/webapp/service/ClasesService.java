@@ -45,10 +45,16 @@ public class ClasesService {
     }
 
     public void deleteOfertaById(int ofertaId) {
-        ofertaRepository.deleteById(ofertaId);
-        // Comprobar si se borran las solicitudes relacionadas. Si no:
-        // List<Solicitud> solicitudes = solicitudRepository.findSolicitudByOferta(ofertaRepository.getOne(ofertaId));
-        // for (Solicitud solicitud: solicitudes) deleteSolicitudById(solicitud.getId());
+        // Se borran las solicitudes asociadas a la oferta
+        List<Solicitud> solicitudes = solicitudRepository.findSolicitudByOferta(ofertaRepository.getOne(ofertaId));
+        for (Solicitud solicitud: solicitudes) deleteSolicitudById(solicitud.getId());
+
+        // Se borra la oferta
+        try {
+            ofertaRepository.deleteById(ofertaId);
+        } catch(Exception ex) {
+            System.out.printf(ex.getMessage());
+        }
     }
 
 
