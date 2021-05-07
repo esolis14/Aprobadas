@@ -31,7 +31,7 @@
     <div class="u-container-style u-expanded-width u-group u-opacity u-opacity-35 u-radius-50 u-shape-round u-white u-group-1">
       <div class="u-container-layout u-valign-middle u-container-layout-1">
         <div class="u-form u-form-1">
-          <form onsubmit="filterOfertas()" class="u-clearfix u-form-custom-backend u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;">
+          <div class="u-clearfix u-form-custom-backend u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;">
             <input type="hidden" id="siteId" name="siteId" value="358809">
             <input type="hidden" id="pageId" name="pageId" value="366491">
             <div class="u-form-group u-form-select u-form-group-1">
@@ -44,7 +44,7 @@
                   <option value="3">Tercer curso</option>
                   <option value="4">Cuarto curso</option>
                 </select>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1.1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
               </div>
             </div>
             <div class="u-form-group u-form-select u-form-group-2">
@@ -57,14 +57,14 @@
                           th:text="${nombreAsignatura}">
                   </option>
                 </select>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1.1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
               </div>
             </div>
             <div class="u-form-group u-form-submit">
-              <a class="u-active-palette-1-dark-1 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-btn-submit u-button-style u-grey-5 u-hover-palette-1-base u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1">FILTRAR<br></a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
+              <button onclick="filterOfertas()" class="u-active-palette-1-dark-1 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-btn-submit u-button-style u-grey-5 u-hover-palette-1-base u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1">FILTRAR<br></button>
+              <!---<input type="submit" value="submit" class="u-form-control-hidden">--->
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@
             <p class="u-text u-text-2" style="text-transform: uppercase;" th:text="${clase.asignatura.grado.nombre}"></p>
             <p class="u-text u-text-3"><span style="font-weight: bold">Curso: &nbsp;</span><span class="clase-curso-asignatura" th:text="${clase.asignatura.curso} + 'º'"></span><br></p>
             <p class="u-text u-text-4"><span style="font-weight: bold">Profesor/a: &nbsp;</span><a class="link-perfil" th:href="@{/user/perfilUser/{id}(id = ${clase.profesor.id})}"><span style="font-weight: normal" th:text="${clase.profesor.nombre} + ' ' + ${clase.profesor.apellido}"></span></a></p>
-            <div class="container">
+            <div class="container star-container">
               <div class="star-widget">
                 <span th:class="${clase.asignatura.curso} < 1 ? 'fa fa-star' : 'fa fa-star checked'"></span>
                 <span th:class="${clase.asignatura.curso} < 2 ? 'fa fa-star' : 'fa fa-star checked'"></span>

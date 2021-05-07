@@ -1,29 +1,23 @@
-.container{
+.star-container{
     width: 150px;
-    /* background: #111; */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-  }
-  .container .star-widget input{
+    margin: 10px auto;
+}
+
+.star-container .star-widget input{
     display: none;
-  }
-  .star-widget label{
+}
+
+.star-widget label{
     color: #444;
     padding: 2px;
     float: right;
     transition: all 0.1s ease;
-  }
-  input:checked ~ label{
-    color: orange;
-  }
-  /* input#rate-5:checked ~ label{
-    color: #fe7;
-    text-shadow: 0 0 5px #952;
-  } */
-  
-  .star-widget .checked {
-    color: orange;
-  }
+}
+
+input:checked ~ label{ color: orange;}
+.star-widget .checked { color: orange;}
   
