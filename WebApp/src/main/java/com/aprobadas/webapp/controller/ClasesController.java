@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -32,9 +34,24 @@ public class ClasesController {
     public String showAllClases(Model model, Principal principal, @ModelAttribute("vistaProf") boolean vistaProf) {
         User sessionUser = userService.getUserByEmail(principal.getName());
         List<Oferta> clases = clasesService.getOfertasByGrado(sessionUser.getGrado());
+        List<Integer> cursos;
+        List<String> asignaturas;
+
         model.addAttribute("asignaturas", asignaturasService.getAllAsignaturas());
         // TODO: Repasar
         if(!clases.isEmpty()) {
+            //cursos = new ArrayList<>();
+            asignaturas = new ArrayList<>();
+
+            for (Oferta clase : clases) {
+                //cursos.add(clase.getAsignatura().getCurso());
+                asignaturas.add(clase.getAsignatura().getNombre());
+            }
+            //cursos = new ArrayList<>(new HashSet<>(cursos)); //Eliminar duplicados de la lista.
+            asignaturas = new ArrayList<>(new HashSet<>(asignaturas)); //Eliminar duplicados de la lista.
+
+            //odel.addAttribute("cursos", cursos);
+            model.addAttribute("asignaturas", asignaturas);
             model.addAttribute("clases", clases);
         } else {
             model.addAttribute("msg",true);
