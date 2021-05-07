@@ -43,7 +43,8 @@
               <li th:unless="${vistaProf}"class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/clases/misSolicitudes}" style="padding: 10px 20px;">Mis Profesores</a></li>
             </ul>
           </div>
-          <div class="u-image u-image-circle u-image-1" data-image-width="692" data-image-height="689"></div>
+          <div th:if="${vistaProf}"class="u-image u-image-circle u-image-1" id="imagen-profesor" data-image-width="692" data-image-height="689"></div>
+          <div th:unless="${vistaProf}" class="u-image u-image-circle u-image-1" id="imagen-estudiante" data-image-width="692" data-image-height="689"></div>
         </div>
         <div class="u-menu-overlay"></div>
       </div>

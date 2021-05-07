@@ -33690,9 +33690,16 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-image-1 {
   width: 127px;
   height: 127px;
-  background-image: url("../img/user.png");
   background-position: 50% 50%;
   margin: 20px auto 0;
+}
+
+#imagen-profesor {
+    background-image: url("../img/profesor.png");
+}
+
+#imagen-estudiante {
+    background-image: url("../img/user.png");
 }
 
 .u-header .u-btn-1 {
@@ -33710,7 +33717,7 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-image-2 {
   width: 99px;
   height: 99px;
-  background-image: url("https://images01.nicepage.com/e946e43613bcf1e901a560a2/5fdb65d5c854543dbb193477/logo.png?version=");
+  background-image: url("../img/logo.png");
   background-position: 50% 50%;
   margin: -69px auto 0 62px;
 }
