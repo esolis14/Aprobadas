@@ -1,4 +1,9 @@
 
+ALTER TABLE solicitud ALTER COLUMN acepted SET DEFAULT false;
+
+ALTER TABLE oferta ADD valoracion int;
+ALTER TABLE oferta COLUMN valoracion SET DEFAULT 0;
+
 INSERT INTO Grado (`id`, `nombre`) VALUES (1, 'Grado en Ingeniería en Tecnología de Telecomunicación');
 INSERT INTO Grado (`id`, `nombre`) VALUES (2, 'Grado en Ingeniería en Tecnología Industrial');
 
