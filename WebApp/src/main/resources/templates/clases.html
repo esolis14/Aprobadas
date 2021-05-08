@@ -32,8 +32,6 @@
       <div class="u-container-layout u-valign-middle u-container-layout-1">
         <div class="u-form u-form-1">
           <div class="u-clearfix u-form-custom-backend u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;">
-            <input type="hidden" id="siteId" name="siteId" value="358809">
-            <input type="hidden" id="pageId" name="pageId" value="366491">
             <div class="u-form-group u-form-select u-form-group-1">
               <label for="select-197f" class="u-form-control-hidden u-label">Seleccionar</label>
               <div class="u-form-select-wrapper">
@@ -62,7 +60,6 @@
             </div>
             <div class="u-form-group u-form-submit">
               <button onclick="filterOfertas()" class="u-active-palette-1-dark-1 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-btn-submit u-button-style u-grey-5 u-hover-palette-1-base u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1">FILTRAR<br></button>
-              <!---<input type="submit" value="submit" class="u-form-control-hidden">--->
             </div>
           </div>
         </div>
@@ -78,15 +75,15 @@
             <img th:if="${clase.asignatura.grado.nombre} == 'Grado en Ingeniería en Tecnología Industrial'" alt="" class="u-expanded-width u-image u-image-default u-image-1" th:src="@{/img/industrial.jpg}" data-image-width="600" data-image-height="400">
             <img th:unless="${clase.asignatura.grado.nombre} == 'Grado en Ingeniería en Tecnología Industrial'" alt="" class="u-expanded-width u-image u-image-default u-image-1" th:src="@{/img/teleco.jpg}" data-image-width="600" data-image-height="400">
             <p class="u-text u-text-2" style="text-transform: uppercase;" th:text="${clase.asignatura.grado.nombre}"></p>
-            <p class="u-text u-text-3"><span style="font-weight: bold">Curso: &nbsp;</span><span class="clase-curso-asignatura" th:text="${clase.asignatura.curso} + 'º'"></span><br></p>
-            <p class="u-text u-text-4"><span style="font-weight: bold">Profesor/a: &nbsp;</span><a class="link-perfil" th:href="@{/user/perfilUser/{id}(id = ${clase.profesor.id})}"><span style="font-weight: normal" th:text="${clase.profesor.nombre} + ' ' + ${clase.profesor.apellido}"></span></a></p>
+            <p class="u-text u-text-3">Curso: <span class="clase-curso-asignatura" th:text="${clase.asignatura.curso} + 'º'"></span><br></p>
+            <p class="u-text u-text-4">Profesor/a: <a class="link-perfil" th:href="@{/user/perfilUser/{id}(id = ${clase.profesor.id})}"><span style="font-weight: normal" th:text="${clase.profesor.nombre} + ' ' + ${clase.profesor.apellido}"></span></a></p>
             <div class="container star-container">
               <div class="star-widget">
-                <span th:class="${clase.asignatura.curso} < 1 ? 'fa fa-star' : 'fa fa-star checked'"></span>
-                <span th:class="${clase.asignatura.curso} < 2 ? 'fa fa-star' : 'fa fa-star checked'"></span>
-                <span th:class="${clase.asignatura.curso} < 3 ? 'fa fa-star' : 'fa fa-star checked'"></span>
-                <span th:class="${clase.asignatura.curso} < 4 ? 'fa fa-star' : 'fa fa-star checked'"></span>
-                <span th:class="${clase.asignatura.curso} < 5 ? 'fa fa-star' : 'fa fa-star checked'"></span>
+                <span th:class="${clase.valoracion} < 1 ? 'fa fa-star' : 'fa fa-star checked'"></span>
+                <span th:class="${clase.valoracion} < 2 ? 'fa fa-star' : 'fa fa-star checked'"></span>
+                <span th:class="${clase.valoracion} < 3 ? 'fa fa-star' : 'fa fa-star checked'"></span>
+                <span th:class="${clase.valoracion} < 4 ? 'fa fa-star' : 'fa fa-star checked'"></span>
+                <span th:class="${clase.valoracion} < 5 ? 'fa fa-star' : 'fa fa-star checked'"></span>
               </div>
             </div>
             <a th:href="@{/clases/solicitarClase/{id}(id = ${clase.id})}" class="u-active-palette-1-dark-1 u-btn u-btn-round u-button-style u-hover-palette-1-base u-palette-1-light-1 u-radius-50 u-btn-2">Solicitar</a>

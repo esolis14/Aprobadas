@@ -62,6 +62,11 @@ public class ClasesService {
 
     public List<Solicitud> getSolicitudesByAlumno(User user) { return solicitudRepository.findSolicitudsByUser(user); }
     public List<Solicitud> getSolicitudesByProfesor(User user) { return solicitudRepository.findSolicitudByOferta_Profesor(user); }
+    public Solicitud getSolicitudById(int id) { return solicitudRepository.getOne(id); }
+
+    public void saveSolicitud(Solicitud solicitud) {
+        solicitudRepository.save(solicitud);
+    }
 
     public void createSolicitud(int ofertaId, User user) {
         Oferta oferta = ofertaRepository.getOne(ofertaId);

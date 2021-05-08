@@ -24346,7 +24346,7 @@ a.u-link.u-hover-grey-25:hover {
 }
 .u-button-style.u-grey-5,
 .u-button-style.u-grey-5[class*="u-border-"] {
-  color: #111111 !important;
+  /*color: #111111 !important;*/
   background-color: #f2f2f2 !important;
 }
 .u-button-style.u-grey-5:hover,
@@ -30789,7 +30789,7 @@ a.u-button-style.u-button-style.active > .u-text-active-palette-1-base[class*="u
 .u-button-style:hover > .u-text-hover-palette-1-base svg,
 .u-button-style.u-button-style.active > .u-text-active-palette-1-base svg,
 .u-text-hover-palette-1-base:focus svg {
-  fill: #478ac9;
+  /*fill: #478ac9;*/
 }
 .u-link.u-text-palette-1-base:hover {
   color: #387cbd !important;

@@ -2,6 +2,10 @@
   color: #125583;
 }
 
+.star-container {
+  font-size: 20px;
+}
+
 .u-section-1 .u-sheet-1 {
   min-height: 118px;
 }
@@ -134,7 +138,7 @@
 .u-section-2 .u-text-4 {
   line-height: 2;
   width: 233px;
-  font-weight: 700;
+  font-weight: 400;
   margin: 10px auto 0;
 }
 
@@ -145,7 +149,7 @@
   background-image: none;
   font-weight: 700;
   letter-spacing: 1px;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
 }
 
 .u-section-2 .u-list-item-2 {

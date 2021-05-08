@@ -7,7 +7,7 @@
     margin: 10px auto;
 }
 
-.star-container .star-widget input{
+.star-widget input{
     display: none;
 }
 
@@ -18,6 +18,7 @@
     transition: all 0.1s ease;
 }
 
-input:checked ~ label{ color: orange;}
-.star-widget .checked { color: orange;}
+input:checked ~ label{ color: #77aad9;}
+.star-widget { color: grey;}
+.star-widget .checked { color: #77aad9;}
   

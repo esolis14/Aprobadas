@@ -24,6 +24,9 @@ public class Oferta implements Serializable {
     @Column(name = "precio")
     private float precio;
 
+    @Column(name = "valoracion")
+    private int valoracion;
+
     @ManyToOne(optional = false)
     private Asignatura asignatura;
 
