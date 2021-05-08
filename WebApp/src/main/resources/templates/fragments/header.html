@@ -51,7 +51,7 @@
     </nav>
     <a sec:authorize="isAuthenticated()" th:href="@{/cambiarVista}" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-light-1 u-white u-btn-1">CAMBIAR VISTA<br></a>
     <div class="u-image u-image-circle u-image-2" data-image-width="692" data-image-height="689"></div>
-    <form style="margin-left:50%; margin-right: 20%" sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+    <form style="margin-left:50%; margin-right: 25%; margin-top: 2px" sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
       <button type="submit" class="u-active-palette-1-light-2 u-border-2 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-palette-1-light-1 u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-2">CERRAR SESIÓN</button>
     </form>
   </div>
