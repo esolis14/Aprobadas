@@ -31,17 +31,17 @@ main:hover .center, main:active .center {
 }
 .top:before {
     transform: rotate(45deg);
-    background: #e46569;
+    background: #77aad9;
 }
 .top:after {
     transform: rotate(135deg);
-    background: #ecaf81;
+    background: #3c73a5;
 }
 .bottom:before {
     transform: rotate(-45deg);
-    background: #60b8d4;
+    background: #4a89bd;
 }
 .bottom:after {
     transform: rotate(-135deg);
-    background: #3745b5;
+    background: #a3c8ea;
 }
