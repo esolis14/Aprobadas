@@ -29,7 +29,9 @@
       <div th:each="oferta : ${ofertas}" class="u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-1">
         <div class="u-container-layout u-similar-container u-container-layout-2">
           <h5 class="u-text u-text-2" th:text="${oferta.asignatura.nombre}"></h5>
-          <a th:href="@{/clases/eliminarAnuncio/{id}(id = ${oferta.id})}"  class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-custom-font u-heading-font u-hover-palette-1-light-2 u-none u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1">ELIMINAR</a>
+          <form th:action="@{/clases/eliminarAnuncio/{id}(id = ${oferta.id})}" method="GET" th:onsubmit="return confirmarEliminarAnuncio()">
+            <button type="submit" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-custom-font u-heading-font u-hover-palette-1-light-2 u-none u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1">ELIMINAR</button>
+          </form>
           <h5 class="u-text u-text-3" th:text="${oferta.asignatura.grado.nombre}"></h5>
           <p class="u-align-justify u-text u-text-4" th:text="${oferta.descripcion}"></p>
         </div>

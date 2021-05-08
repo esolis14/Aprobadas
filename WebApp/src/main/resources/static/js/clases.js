@@ -36,3 +36,8 @@ function filterOfertas() {
         }
     }
 }
+
+function confirmarEliminarAnuncio() {
+    var opcion = confirm("¿Desea eliminar este anuncio y todas su soicitudes?");
+    return opcion;
+}
