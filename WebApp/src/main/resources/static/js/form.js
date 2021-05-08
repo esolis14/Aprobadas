@@ -56,6 +56,7 @@ function validateEmail() {
     }
 }
 
+// Validación del formato de la contraseña
 function validatePassword() {
     const password = document.getElementById("password");
     const rePassword = document.getElementById("re_password");

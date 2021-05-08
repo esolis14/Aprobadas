@@ -83,6 +83,6 @@ public class ClasesService {
         solicitudRepository.save(solicitud);
 
         // Se envía notificación de aceptación al alumno
-        sendEmail.sendNotificacionAceptación(solicitud.getUser().getEmail(), nombre, apellido);
+        sendEmail.sendNotificacionAceptacion(solicitud.getUser().getEmail(), nombre, apellido);
     }
 }
