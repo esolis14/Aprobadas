@@ -10,8 +10,8 @@
     <section class="top"></section>
     <section class="bottom"></section>
     <section class="center">
-        <form id="register_form" method="post" th:action="@{/register}" th:object="${user}" onsubmit="return validatePassword()">
-            <h1><img class="logo" src="img/logo.png" alt="Logo"></h1>
+        <form id="register_form" method="post" th:action="@{/form/register}" th:object="${user}" onsubmit="return validatePassword()">
+            <h1><img class="logo" th:src="@{/img/logo.png}" alt="Logo"></h1>
             <input type="text" id="nombre" placeholder="Nombre" th:field="*{nombre}" required />
             <input type="text" id="apellido" placeholder="Apellido" th:field="*{apellido}" required />
             <input type="text" id="tlf" th:field="*{tlf}" placeholder="Tlf: XXX XXX XXX" required/>
@@ -30,7 +30,7 @@
             <button id="register_button" type="submit" hidden>Registrarse</button>
         </form>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/form.js"> </script>
+        <script th:src="@{/js/form.js}"> </script>
     </section>
 </main>
 </body>

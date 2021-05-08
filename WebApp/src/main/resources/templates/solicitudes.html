@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" style="font-size: 16px;" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Mis Profesores</title>
+  <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+  <link rel="stylesheet" th:href="@{/css/anuncios.css}" media="screen">
+  <script class="u-script" type="text/javascript" th:src="@{/js/jquery-1.9.1.min.js}" defer=""></script>
+  <script class="u-script" type="text/javascript" th:src="@{/js/nicepage.js}" defer=""></script>
+  <script class="u-script" type="text/javascript" th:src="@{/js/clases.js}"></script>
+  <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Oswald:200,300,400,500,600,700|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Archivo+Black:400|Gravitas+One:400">
+</head>
+
+<body class="u-body">
+<header th:replace="fragments/header :: header"></header>
+
+<section class="u-align-center u-clearfix u-image u-shading u-section-1" id="carousel_2e21" data-image-width="729" data-image-height="1080">
+  <!--- TITULO --->
+  <div class="u-align-center u-container-style u-expanded-width u-group u-palette-1-light-1 u-shape-rectangle u-group-1">
+    <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-container-layout-1">
+      <h1 class="u-text u-text-1">MIS SOLICITUDES</h1>
+    </div>
+  </div>
+
+  <!--- MIS SOLICITUDES --->
+  <div class="u-list u-list-1 solicitudes">
+    <div class="u-repeater u-repeater-1">
+      <div th:each="solicitud : ${solicitudes}" class="u-container-style u-grey-5 u-list-item u-repeater-item u-list-item-1">
+        <div class="u-container-layout u-similar-container u-container-layout-2">
+          <h5 class="u-text u-text-2" th:text="${solicitud.oferta.asignatura.nombre}"></h5>
+          <a th:href="@{/clases/eliminarSolicitud/{id}(id = ${solicitud.id})}"  class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-custom-font u-heading-font u-hover-palette-1-light-2 u-none u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1">ELIMINAR</a>
+          <h5 class="u-text u-text-3">Profesor/a: <a class="link-perfil" th:href="@{/user/perfilUser/{id}(id = ${solicitud.oferta.profesor.id})}"><span style="font-weight: normal" th:text="${solicitud.oferta.profesor.nombre} + ' ' + ${solicitud.oferta.profesor.apellido}"></span></a></h5>
+          <p class="u-align-justify u-text u-text-4" th:if="${solicitud.accepted}">Estado: ACEPTADA</p>
+          <p class="u-align-justify u-text u-text-4" th:if="${!solicitud.accepted}">Estado: PENDIENTE</p>
+          <!--- ESTRELLITAS --->
+          <div class="u-container-style u-expanded-width u-group u-group-2">
+            <div class="u-container-layout u-container-layout-3">
+              <div class="u-shape u-shape-svg u-text-palette-1-base u-shape-1">
+                <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 154" style=""><use xlink:href="#svg-1a52"></use></svg>
+                <svg class="u-svg-content" viewBox="0 0 160 154" x="0px" y="0px" id="svg-1a52"><path d="M90.5,6.5l15.7,31.9c1.7,3.5,5,5.9,8.8,6.4l35,5.2c9.6,1.4,13.4,13.2,6.5,20l-25.3,24.8c-2.8,2.7-4,6.6-3.4,10.4l6,35
+	c1.6,9.6-8.4,16.9-16.9,12.4L85.5,136c-3.4-1.8-7.5-1.8-10.9,0l-31.4,16.6c-8.6,4.5-18.6-2.8-16.9-12.4l6-35
+	c0.7-3.8-0.6-7.7-3.4-10.4L3.5,70c-6.9-6.8-3.1-18.6,6.5-20l35-5.1c3.8-0.6,7.1-3,8.8-6.4L69.5,6.6C73.8-2.2,86.2-2.2,90.5,6.5z"></path></svg>
+              </div>
+              <div class="u-shape u-shape-svg u-text-palette-1-base u-shape-2">
+                <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 154" style=""><use xlink:href="#svg-2ee3"></use></svg>
+                <svg class="u-svg-content" viewBox="0 0 160 154" x="0px" y="0px" id="svg-2ee3"><path d="M90.5,6.5l15.7,31.9c1.7,3.5,5,5.9,8.8,6.4l35,5.2c9.6,1.4,13.4,13.2,6.5,20l-25.3,24.8c-2.8,2.7-4,6.6-3.4,10.4l6,35
+	c1.6,9.6-8.4,16.9-16.9,12.4L85.5,136c-3.4-1.8-7.5-1.8-10.9,0l-31.4,16.6c-8.6,4.5-18.6-2.8-16.9-12.4l6-35
+	c0.7-3.8-0.6-7.7-3.4-10.4L3.5,70c-6.9-6.8-3.1-18.6,6.5-20l35-5.1c3.8-0.6,7.1-3,8.8-6.4L69.5,6.6C73.8-2.2,86.2-2.2,90.5,6.5z"></path></svg>
+              </div>
+              <div class="u-shape u-shape-svg u-text-palette-1-base u-shape-3">
+                <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 154" style=""><use xlink:href="#svg-d13a"></use></svg>
+                <svg class="u-svg-content" viewBox="0 0 160 154" x="0px" y="0px" id="svg-d13a"><path d="M90.5,6.5l15.7,31.9c1.7,3.5,5,5.9,8.8,6.4l35,5.2c9.6,1.4,13.4,13.2,6.5,20l-25.3,24.8c-2.8,2.7-4,6.6-3.4,10.4l6,35
+	c1.6,9.6-8.4,16.9-16.9,12.4L85.5,136c-3.4-1.8-7.5-1.8-10.9,0l-31.4,16.6c-8.6,4.5-18.6-2.8-16.9-12.4l6-35
+	c0.7-3.8-0.6-7.7-3.4-10.4L3.5,70c-6.9-6.8-3.1-18.6,6.5-20l35-5.1c3.8-0.6,7.1-3,8.8-6.4L69.5,6.6C73.8-2.2,86.2-2.2,90.5,6.5z"></path></svg>
+              </div>
+              <div class="u-shape u-shape-svg u-text-palette-1-base u-shape-4">
+                <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 154" style=""><use xlink:href="#svg-4284"></use></svg>
+                <svg class="u-svg-content" viewBox="0 0 160 154" x="0px" y="0px" id="svg-4284"><path d="M90.5,6.5l15.7,31.9c1.7,3.5,5,5.9,8.8,6.4l35,5.2c9.6,1.4,13.4,13.2,6.5,20l-25.3,24.8c-2.8,2.7-4,6.6-3.4,10.4l6,35
+	c1.6,9.6-8.4,16.9-16.9,12.4L85.5,136c-3.4-1.8-7.5-1.8-10.9,0l-31.4,16.6c-8.6,4.5-18.6-2.8-16.9-12.4l6-35
+	c0.7-3.8-0.6-7.7-3.4-10.4L3.5,70c-6.9-6.8-3.1-18.6,6.5-20l35-5.1c3.8-0.6,7.1-3,8.8-6.4L69.5,6.6C73.8-2.2,86.2-2.2,90.5,6.5z"></path></svg>
+              </div>
+              <div class="u-shape u-shape-svg u-text-palette-1-base u-shape-5">
+                <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 154" style=""><use xlink:href="#svg-2f8e"></use></svg>
+                <svg class="u-svg-content" viewBox="0 0 160 154" x="0px" y="0px" id="svg-2f8e"><path d="M90.5,6.5l15.7,31.9c1.7,3.5,5,5.9,8.8,6.4l35,5.2c9.6,1.4,13.4,13.2,6.5,20l-25.3,24.8c-2.8,2.7-4,6.6-3.4,10.4l6,35
+	c1.6,9.6-8.4,16.9-16.9,12.4L85.5,136c-3.4-1.8-7.5-1.8-10.9,0l-31.4,16.6c-8.6,4.5-18.6-2.8-16.9-12.4l6-35
+	c0.7-3.8-0.6-7.7-3.4-10.4L3.5,70c-6.9-6.8-3.1-18.6,6.5-20l35-5.1c3.8-0.6,7.1-3,8.8-6.4L69.5,6.6C73.8-2.2,86.2-2.2,90.5,6.5z"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

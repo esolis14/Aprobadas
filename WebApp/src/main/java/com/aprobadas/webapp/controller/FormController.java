@@ -1,38 +1,38 @@
 package com.aprobadas.webapp.controller;
 
 import com.aprobadas.webapp.model.User;
-import com.aprobadas.webapp.service.GradoService;
+import com.aprobadas.webapp.service.AsignaturasService;
 import com.aprobadas.webapp.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/form")
 public class FormController {
 
     private final UserService userService;
-    private final GradoService gradoService;
+    private final AsignaturasService asignaturasService;
 
-    @GetMapping({"/","/login"})
-    public String showLogin(Model model) {
+    @GetMapping("/register")
+    public String showEmailForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("emailError", false);
-        return "login";
+        return "register";
     }
 
     @PostMapping("/sendCode")
     public String sendVerificationCode(@ModelAttribute("user") User user, Model model) {
         if(userService.existsUserByEmail(user)) {
             model.addAttribute("emailError", true);
-            return "login";
+            return "/login";
         } else {
             userService.sendCode(user);
             model.addAttribute("user", user);
             model.addAttribute("codeError", false);
-            return "/verification_code";
+            return "verification_code";
         }
     }
 
@@ -40,7 +40,7 @@ public class FormController {
     public String checkCode(@ModelAttribute("user") User user, Model model) {
         if(userService.checkCode(user)) {
             model.addAttribute("user", user);
-            model.addAttribute("grados", gradoService.getAllGrados());
+            model.addAttribute("grados", asignaturasService.getAllGrados());
             return "registration";
         } else {
             user.setCode(null);
@@ -51,7 +51,7 @@ public class FormController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user, Model model) {
+    public String registerUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/login";
     }

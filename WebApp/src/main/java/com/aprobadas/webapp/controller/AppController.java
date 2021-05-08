@@ -1,51 +1,44 @@
 package com.aprobadas.webapp.controller;
 
 import com.aprobadas.webapp.model.User;
-import com.aprobadas.webapp.service.GradoService;
-import com.aprobadas.webapp.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.security.Principal;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
+@SessionAttributes("vistaProf")
 public class AppController {
 
-    private final UserService userService;
-    private final GradoService gradoService;
+    @ModelAttribute("vistaProf")
+    public boolean vista() { return true; }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String showHome() {
         return "home";
     }
 
-    @GetMapping("/edit")
-    public String showStudentProfile() {
-        return "edit_profile";
+    @GetMapping("/home")
+    public String showHome(Model model, @ModelAttribute("vistaProf") boolean vistaProf) {
+        model.addAttribute("vistaProf", vistaProf);
+        return "home";
     }
 
-    @GetMapping("/profile")
-    public String showProfile(Model model, Principal principal) {
-        model.addAttribute("user", userService.getUserByEmail(principal.getName()));
-        return "profile";
+    @GetMapping("/login")
+    public String showLogin(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("emailError", false);
+        return "login";
     }
 
-    @PostMapping("/edit")
-    public String editProfile(Model model, Principal principal) {
-        model.addAttribute("user", userService.getUserByEmail(principal.getName()));
-        model.addAttribute("grados", gradoService.getAllGrados());
-        return "edit_profile";
-    }
-
-    @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute User user) {
-        userService.updateUser(user);
-        return "redirect:/profile";
+    @GetMapping("/cambiarVista")
+    public String cambiarVista(Model model, @ModelAttribute("vistaProf") boolean vistaProf){
+        if(vistaProf == true) {
+            model.addAttribute("vistaProf", false);
+        } else {
+            model.addAttribute("vistaProf", true);
+        }
+        return "home";
     }
 }

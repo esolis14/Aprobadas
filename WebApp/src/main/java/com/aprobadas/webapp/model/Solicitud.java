@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
+@Table(name = "solicitud")
 @NoArgsConstructor
 public class Solicitud implements Serializable {
 
@@ -17,8 +18,8 @@ public class Solicitud implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "acepted")
-    private boolean acepted;
+    @Column(name = "accepted")
+    private boolean accepted;
 
     @Column(name = "valoracion")
     private int valoracion;
@@ -28,4 +29,10 @@ public class Solicitud implements Serializable {
 
     @ManyToOne(optional = false)
     private User user;
+
+    public Solicitud(boolean accepted, Oferta oferta, User user) {
+        this.accepted = accepted;
+        this.oferta = oferta;
+        this.user = user;
+    }
 }

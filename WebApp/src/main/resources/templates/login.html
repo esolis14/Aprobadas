@@ -12,23 +12,25 @@
     <section class="bottom"></section>
     <section class="center">
         <form id="login_form" method="post" th:action="@{/login}">
-            <h1><img class="logo" src="img/logo.png" alt="Logo"></h1>
+            <h1><img class="logo" th:src="@{/img/logo.png}" alt="Logo"></h1>
             <input type="email" name="email" placeholder="email@ikasle.ehu.eus" required/>
             <input type="password" name="password" placeholder="Contraseña" required/>
             <p th:if="${param.error}" class="error_message">Email o contraseña incorrectos.</p>
+            <p th:if="${emailError}" class="error_message">Ya existe un usuario con este email. Inicia sesión.</p>
             <button id="login_button" type="submit">Iniciar sesión</button>
         </form>
-        <form id="email_form" method="post" th:action="@{/sendCode}" th:object="${user}" hidden>
-            <h1><img class="logo" src="img/logo.png" alt="Logo"></h1>
+        <!---
+        <form id="email_form" method="post" th:action="@{/form/sendCode}" th:object="${user}" hidden>
+            <h1><img class="logo" th:src="@{/img/logo.png}" alt="Logo"></h1>
             <input id="reg_email" type="email" placeholder="email@ikasle.ehu.eus" th:field="*{email}" required/>
             <p th:if="${emailError}" class="error_message">Ya existe un usuario con este email.</p>
             <button id="email_button" type="submit">Registrarse</button>
-        </form>
-        <a id="switchForm">
+        </form> --->
+        <a th:href="@{/form/register}" id="switchForm2">
             <p>¿Todavía no estás registrado?<br>Regístrate ya</p>
         </a>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/form.js"> </script>
+        <script th:src="@{/js/form.js}"> </script>
     </section>
 </main>
 </body>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" style="font-size: 16px;" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Mi Perfil</title>
+  <link rel="stylesheet" th:href="@{/css/nicepage.css}" media="screen">
+  <link rel="stylesheet" th:href="@{/css/perfil.css}" media="screen">
+  <script class="u-script" type="text/javascript" th:src="@{/js/jquery-1.9.1.min.js}"></script>
+  <script class="u-script" type="text/javascript" th:src="@{/js/nicepage.js}"></script>
+  <script class="u-script" type="text/javascript" th:src="@{/js/perfil.js}"></script>
+  <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Oswald:200,300,400,500,600,700|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Archivo+Black:400|Gravitas+One:400">
+</head>
+
+<body class="u-body">
+<header th:replace="fragments/header :: header"></header>
+
+<!--- TITULO --->
+<section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="2022" data-image-height="488" id="sec-c52a">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <h1 class="u-text u-title u-text-1">
+          <span th:if="${edit}" style="caret-color: rgba(0, 0, 0, 0);">MI <span style="font-weight: 700;">PERFIL</span></span>
+          <span th:unless="${edit}" style="caret-color: rgba(0, 0, 0, 0);"><span style="font-weight: 700;" th:text="${user.nombre} + ' ' + ${user.apellido}"></span></span>
+      <br>
+    </h1>
+  </div>
+</section>
+
+<!--- PERFIL --->
+<section class="u-clearfix u-section-2" id="sec-18ef">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-clearfix u-gutter-0 u-layout-wrap u-palette-5-light-3 u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div class="u-container-style u-layout-cell u-left-cell u-size-20 u-layout-cell-1">
+            <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
+              <div class="u-border-4 u-border-grey-75 u-image u-image-circle u-image-1" data-image-width="1920" data-image-height="1920"></div>
+              <a th:if="${edit}" th:onclick="editarPerfil()"  class="u-active-palette-1-light-1 u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-light-2 u-radius-50 u-text-active-white u-text-hover-white u-btn-1">EDITAR</a>
+            </div>
+          </div>
+          <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-40 u-layout-cell-2">
+            <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
+              <div class="u-expanded-width-xl u-table u-table-responsive u-table-1">
+                <table class="u-table-entity">
+                  <colgroup>
+                    <col width="26%">
+                    <col width="74%">
+                  </colgroup>
+                  <tbody class="u-table-body u-table-body-1">
+                  <tr style="height: 42px;">
+                    <td class="u-first-column u-table-cell u-table-cell-1">NOMBRE:</td>
+                    <td class="u-table-cell" th:text="${user.nombre}"></td>
+                  </tr>
+                  <tr style="height: 42px;">
+                    <td class="u-first-column u-table-cell u-table-cell-3">APELLIDO:</td>
+                    <td class="u-table-cell" th:text="${user.apellido}"></td>
+                  </tr>
+                  <tr style="height: 42px;">
+                    <td class="u-first-column u-table-cell u-table-cell-5">EMAIL:</td>
+                    <td class="u-table-cell" th:text="${user.email}"></td>
+                  </tr>
+                  <tr style="height: 42px;">
+                    <td class="u-first-column u-table-cell u-table-cell-7">TLF:</td>
+                    <td class="u-table-cell" th:text="${user.tlf}"></td>
+                  </tr>
+                  <tr style="height: 42px;">
+                    <td class="u-first-column u-table-cell u-table-cell-9">GRADO:</td>
+                    <td class="u-table-cell" th:text="${user.grado.nombre}"></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--- FORMULARIO EDITAR PERFIL --->
+<section th:if="${edit}" class="u-clearfix u-section-3" id="carousel_58f7" style="display: none">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-clearfix u-gutter-0 u-layout-wrap u-palette-5-light-3 u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div class="u-container-style u-layout-cell u-left-cell u-size-20 u-layout-cell-1">
+            <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
+              <div class="u-border-4 u-border-grey-75 u-image u-image-circle u-image-1" data-image-width="1920" data-image-height="1920"></div>
+            </div>
+          </div>
+          <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-40 u-layout-cell-2">
+            <div class="u-container-layout u-container-layout-2">
+              <div class="u-align-left u-form u-form-1">
+                <form method="POST" th:action="@{updateUser}" th:object="${user}" class="u-clearfix u-form-custom-backend u-form-spacing-6 u-form-vertical u-inner-form" style="padding: 10px;" name="edit_perfil">
+                  <input type="hidden" id="siteId" name="siteId" value="358809">
+                  <input type="hidden" id="pageId" name="pageId" value="360411">
+                  <div class="u-form-group u-form-name">
+                    <label for="name-32ad" class="u-form-control-hidden u-label">Nombre</label>
+                    <input type="text" th:field="*{nombre}" th:value="${user.nombre}" id="name-32ad" name="nombre" class="u-border-2 u-border-grey-40 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input" required>
+                  </div>
+                  <div class="u-form-group u-form-name u-form-group-2">
+                    <label for="name-4281" class="u-form-control-hidden u-label">Apellido</label>
+                    <input type="text" th:field="*{apellido}" th:value="${user.apellido}" id="name-4281" name="apellido" class="u-border-2 u-border-grey-40 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input" required>
+                  </div>
+                  <div class="u-form-email u-form-group u-form-group-3">
+                    <label for="name-44a3" class="u-form-control-hidden u-label">Email</label>
+                    <input type="email" th:field="*{email}" th:value="${user.email}" id="name-44a3" name="email" class="u-border-2 u-border-grey-40 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input" required>
+                  </div>
+                  <div class="u-form-group u-form-group-4">
+                    <label for="phone-b030" class="u-form-control-hidden u-label">Teléfono</label>
+                    <input type="text" th:field="*{tlf}" th:value="${user.tlf}" id="phone-b030" name="tlf" class="u-border-2 u-border-grey-40 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input" required="required">
+                  </div>
+                  <div class="u-form-group u-form-select u-form-group-5">
+                    <label for="select-e002" class="u-form-control-hidden u-label">Grado</label>
+                    <div class="u-form-select-wrapper">
+                      <select th:field="*{grado}" id="select-e002" name="grado" class="u-border-2 u-border-grey-40 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle u-input">
+                        <option th:each="grado : ${grados}" th:value="${grado.id}" th:text="${grado.nombre}"></option>
+                      </select>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1.1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                    </div>
+                  </div>
+                  <div class="u-align-center u-form-group u-form-submit">
+                    <a class="u-active-palette-1-base u-border-0 u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-light-2 u-radius-50 u-text-active-white u-text-body-color u-text-hover-white u-btn-1">GUARDAR<br></a>
+                    <input type="submit" value="submit" class="u-form-control-hidden">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="u-clearfix u-palette-1-light-2 u-section-4" id="sec-d238">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-expanded-width u-list u-list-1">
+      <div class="u-repeater u-repeater-1">
+        <div class="u-align-center u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-1">
+            <h1 class="u-text u-text-body-alt-color u-title u-text-1" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000" th:text="${numAnuncios}"></h1>
+            <p class="u-text u-text-palette-1-dark-2 u-text-2">ANUNCIOS PUBLICADOS</p>
+          </div>
+        </div>
+        <div class="u-align-center u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-2">
+            <h1 class="u-text u-text-body-alt-color u-title u-text-3" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000" th:text="${numSolicitudes}"></h1>
+            <p class="u-text u-text-palette-1-dark-2 u-text-4">CLASES ACEPTADAS</p>
+          </div>
+        </div>
+        <div class="u-align-center u-container-style u-list-item u-repeater-item">
+          <div class="u-container-layout u-similar-container u-container-layout-3">
+            <h1 class="u-text u-text-body-alt-color u-title u-text-5" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">87</h1>
+            <p class="u-text u-text-palette-1-dark-2 u-text-6">SATISFACCIÓN ALUMNOS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

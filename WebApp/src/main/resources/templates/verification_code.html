@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <title>aprobadas - Verification</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/effects.css}">
 </head>
-<body>
+<body id="image_background">
 <main>
     <section class="top"></section>
     <section class="bottom"></section>
     <section class="center">
         <form id="codigo_form" method="post" th:action="@{/checkCode}" th:object="${user}" >
-            <h1><img class="logo" src="img/logo.png" alt="Logo"></h1>
+            <h1><img class="logo" th:src="@{/img/logo.png}" alt="Logo"></h1>
             <input type="email" th:field="*{email}" th:value="${user.email}" required/>
             <input id="codigo" type="number" placeholder="Código: XXXXXX" th:field="*{code}" required/>
             <p th:if="${codeError}" class="error_message">Código incorrecto.</p>

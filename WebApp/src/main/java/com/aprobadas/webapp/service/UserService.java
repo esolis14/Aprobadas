@@ -43,9 +43,16 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(appUser.getEmail(), appUser.getPassword(), grantList);
     }
 
-    // Pendiente de eliminar
     public boolean existsUserByEmail(User user) {
         return userRepository.findByEmail(user.getEmail()).isPresent();
+    }
+
+    public User getUserById(int id) {
+        if(userRepository.findById(id).isPresent()) {
+            return userRepository.getOne(id);
+        } else {
+            throw new UsernameNotFoundException("No existe un usuario con ese email.");
+        }
     }
 
     public User getUserByEmail(String email) {
@@ -85,7 +92,7 @@ public class UserService implements UserDetailsService {
         // Se envía email con código de verificación
         try {
             SendEmail email = new SendEmail();
-            email.send(newUser.getEmail(), code);
+            email.sendCode(newUser.getEmail(), code);
         } catch(RuntimeException re) {
             re.printStackTrace();
         }

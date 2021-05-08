@@ -2,26 +2,33 @@ package com.aprobadas.webapp.service;
 
 import com.aprobadas.webapp.model.Grado;
 import com.aprobadas.webapp.model.Oferta;
+import com.aprobadas.webapp.model.Solicitud;
 import com.aprobadas.webapp.model.User;
 import com.aprobadas.webapp.repository.OfertaRepository;
 import com.aprobadas.webapp.repository.SolicitudRepository;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@NoArgsConstructor
 public class ClasesService {
 
-    @Autowired
     OfertaRepository ofertaRepository;
+    SolicitudRepository solicitudRepository;
+    SendEmail sendEmail;
 
     @Autowired
-    SolicitudRepository solicitudRepository;
-
-    public ClasesService(OfertaRepository ofertaRepository) {
+    public ClasesService(OfertaRepository ofertaRepository, SolicitudRepository solicitudRepository, SendEmail sendEmail) {
         this.ofertaRepository = ofertaRepository;
+        this.solicitudRepository = solicitudRepository;
+        this.sendEmail = sendEmail;
     }
+
+
+    // ************ Funciones OFERTAS ************
 
     public List<Oferta> getOfertasByGrado(Grado grado) {
         List<Oferta> allOfertas = ofertaRepository.findAll();
@@ -30,7 +37,7 @@ public class ClasesService {
     }
 
     public List<Oferta> getOfertasByProfesor(User profesor) {
-        return ofertaRepository.findOfertaByProfesor(profesor);
+        return ofertaRepository.findOfertasByProfesor(profesor);
     }
 
     public void saveOferta(Oferta oferta) {
@@ -39,6 +46,37 @@ public class ClasesService {
 
     public void deleteOfertaById(int ofertaId) {
         ofertaRepository.deleteById(ofertaId);
+        // Comprobar si se borran las solicitudes relacionadas. Si no:
+        // List<Solicitud> solicitudes = solicitudRepository.findSolicitudByOferta(ofertaRepository.getOne(ofertaId));
+        // for (Solicitud solicitud: solicitudes) deleteSolicitudById(solicitud.getId());
     }
 
+
+    // ************ Funciones SOLICITUDES ************
+
+    public List<Solicitud> getSolicitudesByAlumno(User user) { return solicitudRepository.findSolicitudsByUser(user); }
+    public List<Solicitud> getSolicitudesByProfesor(User user) { return solicitudRepository.findSolicitudByOferta_Profesor(user); }
+
+    public void createSolicitud(int ofertaId, User user) {
+        Oferta oferta = ofertaRepository.getOne(ofertaId);
+
+        // TODO: Buscar si el usuario ya ha enviado una solicitud.
+        solicitudRepository.save(new Solicitud(false, oferta, user));
+
+        // Se envía notificación de solicitud al profesor
+        sendEmail.sendNotificacionSolicitud(oferta.getProfesor().getEmail(), user.getNombre(), user.getApellido());
+    }
+
+    public void deleteSolicitudById(int id) {
+        solicitudRepository.deleteById(id);
+    }
+
+    public void aceptarSolicitud(int id, String nombre, String apellido) {
+        Solicitud solicitud = solicitudRepository.getOne(id);
+        solicitud.setAccepted(true);
+        solicitudRepository.save(solicitud);
+
+        // Se envía notificación de aceptación al alumno
+        sendEmail.sendNotificacionAceptación(solicitud.getUser().getEmail(), nombre, apellido);
+    }
 }

@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -27,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http
                 .authorizeRequests()
                 .antMatchers("/css/**","/img/**","/js/**").permitAll()
-                .antMatchers("/","/index", "/email", "/sendCode", "/code", "/checkCode", "/registration", "/register").permitAll()
+                .antMatchers("/", "/login", "/form*").permitAll()
                 .antMatchers("/admin*").access("hasRole('ADMIN')")
                 .antMatchers("/user*", "/clases*").access("hasRole('USER') or hasRole('ADMIN')")
                     .anyRequest().authenticated()
@@ -47,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     // Registra el service para usuarios y el encriptador de contraseña
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth, HttpServletRequest request) throws Exception {
         // Setting Service to find User in the database and Setting PassswordEncoder
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
