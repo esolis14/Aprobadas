@@ -74,8 +74,8 @@ h1  {
 button {
     text-transform: uppercase;
     background: #1A6AA0;
-    border-radius: 1px;
-    border: 50px solid #1A6AA0;
+    border-radius: 50px;
+    border: 1px solid #1A6AA0;
     padding: 12px 40px;
     color: white;
     cursor: pointer;
