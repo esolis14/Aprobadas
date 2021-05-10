@@ -39,17 +39,10 @@ public class ClasesService {
     public List<Oferta> getOfertasByProfesor(User profesor) {
         return ofertaRepository.findOfertasByProfesor(profesor);
     }
-
     public void saveOferta(Oferta oferta) {
         ofertaRepository.save(oferta);
     }
-
-    public void deleteOfertaById(int ofertaId) {
-        ofertaRepository.deleteById(ofertaId);
-        // Comprobar si se borran las solicitudes relacionadas. Si no:
-        // List<Solicitud> solicitudes = solicitudRepository.findSolicitudByOferta(ofertaRepository.getOne(ofertaId));
-        // for (Solicitud solicitud: solicitudes) deleteSolicitudById(solicitud.getId());
-    }
+    public void deleteOfertaById(int ofertaId) { ofertaRepository.deleteById(ofertaId); }
 
 
     // ************ Funciones SOLICITUDES ************
@@ -59,8 +52,6 @@ public class ClasesService {
 
     public void createSolicitud(int ofertaId, User user) {
         Oferta oferta = ofertaRepository.getOne(ofertaId);
-
-        // TODO: Buscar si el usuario ya ha enviado una solicitud.
         solicitudRepository.save(new Solicitud(false, oferta, user));
 
         // Se envía notificación de solicitud al profesor

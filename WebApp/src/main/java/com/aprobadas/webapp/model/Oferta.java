@@ -1,5 +1,6 @@
 package com.aprobadas.webapp.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,4 +30,10 @@ public class Oferta implements Serializable {
 
     @ManyToOne(optional = false)
     private User profesor;
+
+    public Oferta(String descripcion, Asignatura asignatura, User profesor) {
+        this.descripcion = descripcion;
+        this.asignatura = asignatura;
+        this.profesor = profesor;
+    }
 }

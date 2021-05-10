@@ -26,4 +26,10 @@ public class Asignatura implements Serializable {
 
     @ManyToOne(optional = false)
     private Grado grado;
+
+    public Asignatura(String nombre, int curso, Grado grado) {
+        this.nombre = nombre;
+        this.curso = curso;
+        this.grado = grado;
+    }
 }

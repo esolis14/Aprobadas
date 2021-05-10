@@ -20,4 +20,8 @@ public class Grado implements Serializable {
 
     @Column(name = "nombre")
     private String nombre;
+
+    public Grado(String nombre) {
+        this.nombre = nombre;
+    }
 }
