@@ -26,7 +26,22 @@ public class UserController {
     private final ClasesService clasesService;
 
     @GetMapping("/perfil")
-    public String showPerfile(Model model, Principal principal, @ModelAttribute("vistaProf") boolean vistaProf) {
+    public String showPerfil(Model model, Principal principal, @ModelAttribute("vistaProf") boolean vistaProf) {
+        User sessionUser = userService.getUserByEmail(principal.getName());
+        List<Oferta> listaOfertas = clasesService.getOfertasByProfesor(sessionUser);
+        List<Solicitud> listaSolicitudesAceptadas = clasesService.getSolicitudesByProfesor(sessionUser);
+        double mediaVal = listaSolicitudesAceptadas.stream().map(Solicitud::getValoracion).mapToInt(a -> a).average().orElse(0);
+        model.addAttribute("user", sessionUser);
+        model.addAttribute("numAnuncios", listaOfertas.size());
+        model.addAttribute("numSolicitudes", listaSolicitudesAceptadas.size());
+        model.addAttribute("edit", true);
+        model.addAttribute("vistaProf", vistaProf);
+        model.addAttribute("satisfaccion", (int)(100*(mediaVal/5)));
+        return "perfil";
+    }
+
+    @GetMapping("/editPerfil")
+    public String showEditPerfil(Model model, Principal principal, @ModelAttribute("vistaProf") boolean vistaProf) {
         User sessionUser = userService.getUserByEmail(principal.getName());
         List<Oferta> listaOfertas = clasesService.getOfertasByProfesor(sessionUser);
         List<Solicitud> listaSolicitudesAceptadas = clasesService.getSolicitudesByProfesor(sessionUser);
@@ -35,10 +50,10 @@ public class UserController {
         model.addAttribute("numAnuncios", listaOfertas.size());
         model.addAttribute("numSolicitudes", listaSolicitudesAceptadas.size());
         model.addAttribute("grados", asignaturasService.getAllGrados());
-        model.addAttribute("edit", true);
         model.addAttribute("vistaProf", vistaProf);
+        model.addAttribute("emailError", false);
         model.addAttribute("satisfaccion", (int)(100*(mediaVal/5)));
-        return "perfil";
+        return "edit_perfil";
     }
 
     @GetMapping("/perfilUser/{id}")
@@ -57,9 +72,26 @@ public class UserController {
     }
 
     @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute User user, @ModelAttribute("vistaProf") boolean vistaProf, RedirectAttributes attributes) {
-        userService.updateUser(user);
-        attributes.addFlashAttribute("vistaProf", vistaProf);
-        return "redirect:/user/perfil";
+    public String updateUser(@ModelAttribute User user, @ModelAttribute("vistaProf") boolean vistaProf, Model model, Principal principal, RedirectAttributes attributes) {
+        if(userService.existsUserByEmail(user) && !user.getEmail().equals(principal.getName())) {
+            model.addAttribute("existsEmail", true);
+            attributes.addFlashAttribute("vistaProf", vistaProf);
+            User sessionUser = userService.getUserByEmail(principal.getName());
+            List<Oferta> listaOfertas = clasesService.getOfertasByProfesor(sessionUser);
+            List<Solicitud> listaSolicitudesAceptadas = clasesService.getSolicitudesByProfesor(sessionUser);
+            double mediaVal = listaSolicitudesAceptadas.stream().map(Solicitud::getValoracion).mapToInt(a -> a).average().orElse(0);
+            model.addAttribute("user", sessionUser);
+            model.addAttribute("numAnuncios", listaOfertas.size());
+            model.addAttribute("numSolicitudes", listaSolicitudesAceptadas.size());
+            model.addAttribute("grados", asignaturasService.getAllGrados());
+            model.addAttribute("vistaProf", vistaProf);
+            model.addAttribute("emailError", true);
+            model.addAttribute("satisfaccion", (int)(100*(mediaVal/5)));
+            return "edit_perfil";
+        } else {
+            userService.updateUser(user);
+            attributes.addFlashAttribute("vistaProf", vistaProf);
+            return "redirect:/user/perfil";
+        }
     }
 }
