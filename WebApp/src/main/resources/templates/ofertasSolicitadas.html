@@ -33,7 +33,7 @@
                     <a th:if="${solicitud.accepted}" class="u-active-palette-1-light-1 u-border-2 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-custom-font u-heading-font u-hover-palette-1-light-2 u-none u-radius-50 u-text-active-white u-text-hover-white u-text-palette-1-base u-btn-1" disabled="">ACEPTADA</a>
                     <h5 class="u-text u-text-3">Alumno/a: <a class="link-perfil" th:href="@{/user/perfilUser/{id}(id = ${solicitud.user.id})}"><span style="font-weight: normal" th:text="${solicitud.user.nombre} + ' ' + ${solicitud.user.apellido}"></span></a></h5>
                     <!--- ESTRELLITAS --->
-                    <div class="u-container-style u-expanded-width u-group u-group-2">
+                    <div th:if="${solicitud.accepted}" class="u-container-style u-expanded-width u-group u-group-2">
                         <div class="u-container-layout u-container-layout-3">
                             <div class="u-shape u-shape-svg u-text-palette-1-base u-shape-1">
                                 <svg th:style="${solicitud.valoracion} < 1 ? 'fill: grey' : 'fill: orange'" class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 154" style=""><use xlink:href="#svg-1a52"></use></svg>

@@ -133,11 +133,12 @@ public class ClasesController {
         return "redirect:/clases/misSolicitudes";
     }
 
-    @GetMapping("/valorarSolicitud/{id}/{val}")
-    public String valorarSolicitud(@PathVariable("id") int id, @PathVariable("val") int val, @ModelAttribute("vistaProf") boolean vistaProf, RedirectAttributes attributes) {
+    @GetMapping("/valorarSolicitud")
+    public String valorarSolicitud(@RequestParam(name = "id") int id, @RequestParam(name = "rate", required = false, defaultValue = "0")  int rate, @ModelAttribute("vistaProf") boolean vistaProf, RedirectAttributes attributes) {
         Solicitud solicitud = clasesService.getSolicitudById(id);
-        solicitud.setValoracion(val);
+        solicitud.setValoracion(rate);
         clasesService.saveSolicitud(solicitud);
+        clasesService.actualizarValoracionOferta(solicitud.getOferta().getId());
         attributes.addFlashAttribute("vistaProf", vistaProf);
         return "redirect:/clases/misSolicitudes";
     }

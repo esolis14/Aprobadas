@@ -1,10 +1,13 @@
 .star-container{
-    width: 150px;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 10px auto;
+    margin: 15px auto 0 auto;
+}
+
+.star-form {
+    display: flex;
 }
 
 .star-widget input{
@@ -12,13 +15,13 @@
 }
 
 .star-widget label{
-    color: #444;
     padding: 2px;
-    float: right;
     transition: all 0.1s ease;
+    font-size: 30px;
+    float: right;
 }
 
 input:checked ~ label{ color: #77aad9;}
 .star-widget { color: grey;}
-.star-widget .checked { color: #77aad9;}
+.star-widget .checked { color: orange;}
   
