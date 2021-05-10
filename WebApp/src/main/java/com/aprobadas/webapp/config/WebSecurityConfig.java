@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     // Registra el service para usuarios y el encriptador de contraseña
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, HttpServletRequest request) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // Setting Service to find User in the database and Setting PassswordEncoder
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
