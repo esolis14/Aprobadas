@@ -39,7 +39,6 @@ public class ClasesService {
     public List<Oferta> getOfertasByProfesor(User profesor) {
         return ofertaRepository.findOfertasByProfesor(profesor);
     }
-
     public void saveOferta(Oferta oferta) {
         ofertaRepository.save(oferta);
     }

@@ -400,8 +400,9 @@ body {
     }
 
     .u-section-1 .u-text-1 {
-        margin-right: calc(((100% - 720px) / 2) + 55px);
-        margin-left: calc(((100% - 720px) / 2) + 54px);
+        margin: auto;
+        /*margin-right: calc(((100% - 720px) / 2) + 55px);
+        margin-left: calc(((100% - 720px) / 2) + 54px);*/
     }
 
     .u-section-1 .u-list-1 {
@@ -478,7 +479,7 @@ body {
 
     .u-section-1 .u-text-1 {
         width: 540px;
-        margin-top: -142px;
+        /*margin-top: -142px;*/
         margin-left: calc(((100% - 540px) / 2));
         margin-right: calc(((100% - 540px) / 2));
     }
