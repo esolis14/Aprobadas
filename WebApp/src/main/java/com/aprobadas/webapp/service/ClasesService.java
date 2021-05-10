@@ -13,12 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@NoArgsConstructor
 public class ClasesService {
 
-    OfertaRepository ofertaRepository;
-    SolicitudRepository solicitudRepository;
-    SendEmail sendEmail;
+    private final OfertaRepository ofertaRepository;
+    private final SolicitudRepository solicitudRepository;
+    private final SendEmail sendEmail;
 
     @Autowired
     public ClasesService(OfertaRepository ofertaRepository, SolicitudRepository solicitudRepository, SendEmail sendEmail) {
@@ -81,7 +80,6 @@ public class ClasesService {
     public void createSolicitud(int ofertaId, User user) {
         Oferta oferta = ofertaRepository.getOne(ofertaId);
 
-        // TODO: Buscar si el usuario ya ha enviado una solicitud.
         solicitudRepository.save(new Solicitud(false, oferta, user));
 
         // Se envía notificación de solicitud al profesor
@@ -93,9 +91,7 @@ public class ClasesService {
 
     }
 
-    public void deleteSolicitudById(int id) {
-        solicitudRepository.deleteById(id);
-    }
+    public void deleteSolicitudById(int id) { solicitudRepository.deleteById(id); }
 
     public void aceptarSolicitud(int id, String nombre, String apellido) {
         Solicitud solicitud = solicitudRepository.getOne(id);
