@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AppController {
 
     @ModelAttribute("vistaProf")
-    public boolean vista() { return true; }
+    public boolean vista() { return false; }
 
     @GetMapping("/")
     public String showHome() {

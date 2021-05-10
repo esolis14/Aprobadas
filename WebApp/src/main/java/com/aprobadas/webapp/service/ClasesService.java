@@ -39,23 +39,44 @@ public class ClasesService {
     public List<Oferta> getOfertasByProfesor(User profesor) {
         return ofertaRepository.findOfertasByProfesor(profesor);
     }
-
     public void saveOferta(Oferta oferta) {
         ofertaRepository.save(oferta);
     }
 
     public void deleteOfertaById(int ofertaId) {
-        ofertaRepository.deleteById(ofertaId);
-        // Comprobar si se borran las solicitudes relacionadas. Si no:
-        // List<Solicitud> solicitudes = solicitudRepository.findSolicitudByOferta(ofertaRepository.getOne(ofertaId));
-        // for (Solicitud solicitud: solicitudes) deleteSolicitudById(solicitud.getId());
+        // Se borran las solicitudes asociadas a la oferta
+        List<Solicitud> solicitudes = solicitudRepository.findSolicitudByOferta(ofertaRepository.getOne(ofertaId));
+        for (Solicitud solicitud: solicitudes) deleteSolicitudById(solicitud.getId());
+
+        // Se borra la oferta
+        try {
+            ofertaRepository.deleteById(ofertaId);
+        } catch(Exception ex) {
+            System.out.print(ex.getMessage());
+        }
     }
 
+    public void actualizarValoracionOferta(int ofertaId){
+        List<Solicitud> solicitudes = solicitudRepository.findSolicitudByOferta(ofertaRepository.getOne(ofertaId));
+        int rate = 0;
+        for (Solicitud solicitud: solicitudes) {
+            rate += solicitud.getValoracion();
+        }
+        rate = rate/solicitudes.size();
+        Oferta oferta = ofertaRepository.getOne(ofertaId);
+        oferta.setValoracion(rate);
+        ofertaRepository.save(oferta);
+    }
 
     // ************ Funciones SOLICITUDES ************
 
     public List<Solicitud> getSolicitudesByAlumno(User user) { return solicitudRepository.findSolicitudsByUser(user); }
     public List<Solicitud> getSolicitudesByProfesor(User user) { return solicitudRepository.findSolicitudByOferta_Profesor(user); }
+    public Solicitud getSolicitudById(int id) { return solicitudRepository.getOne(id); }
+
+    public void saveSolicitud(Solicitud solicitud) {
+        solicitudRepository.save(solicitud);
+    }
 
     public void createSolicitud(int ofertaId, User user) {
         Oferta oferta = ofertaRepository.getOne(ofertaId);
@@ -64,7 +85,12 @@ public class ClasesService {
         solicitudRepository.save(new Solicitud(false, oferta, user));
 
         // Se envía notificación de solicitud al profesor
-        sendEmail.sendNotificacionSolicitud(oferta.getProfesor().getEmail(), user.getNombre(), user.getApellido());
+        try {
+            sendEmail.sendNotificacionSolicitud(oferta.getProfesor().getEmail(), user.getNombre(), user.getApellido());
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
+
     }
 
     public void deleteSolicitudById(int id) {
@@ -77,6 +103,10 @@ public class ClasesService {
         solicitudRepository.save(solicitud);
 
         // Se envía notificación de aceptación al alumno
-        sendEmail.sendNotificacionAceptación(solicitud.getUser().getEmail(), nombre, apellido);
+        try {
+            sendEmail.sendNotificacionAceptacion(solicitud.getUser().getEmail(), nombre, apellido);
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
     }
 }

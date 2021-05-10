@@ -30,12 +30,14 @@ public class UserController {
         User sessionUser = userService.getUserByEmail(principal.getName());
         List<Oferta> listaOfertas = clasesService.getOfertasByProfesor(sessionUser);
         List<Solicitud> listaSolicitudesAceptadas = clasesService.getSolicitudesByProfesor(sessionUser);
+        double mediaVal = listaSolicitudesAceptadas.stream().map(Solicitud::getValoracion).mapToInt(a -> a).average().orElse(0);
         model.addAttribute("user", sessionUser);
         model.addAttribute("numAnuncios", listaOfertas.size());
         model.addAttribute("numSolicitudes", listaSolicitudesAceptadas.size());
         model.addAttribute("grados", asignaturasService.getAllGrados());
         model.addAttribute("edit", true);
         model.addAttribute("vistaProf", vistaProf);
+        model.addAttribute("satisfaccion", (int)(100*(mediaVal/5)));
         return "perfil";
     }
 
@@ -44,11 +46,13 @@ public class UserController {
         User user = userService.getUserById(id);
         List<Oferta> listaOfertas = clasesService.getOfertasByProfesor(user);
         List<Solicitud> listaSolicitudesAceptadas = clasesService.getSolicitudesByProfesor(user);
+        double mediaVal = listaSolicitudesAceptadas.stream().map(Solicitud::getValoracion).mapToInt(a -> a).average().orElse(0);
         model.addAttribute("user", user);
         model.addAttribute("numAnuncios", listaOfertas.size());
         model.addAttribute("numSolicitudes", listaSolicitudesAceptadas.size());
         model.addAttribute("edit", false);
         model.addAttribute("vistaProf", vistaProf);
+        model.addAttribute("satisfaccion", (int)(100*(mediaVal/5)));
         return "perfil";
     }
 

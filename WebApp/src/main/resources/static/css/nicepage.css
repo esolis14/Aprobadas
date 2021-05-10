@@ -24346,7 +24346,7 @@ a.u-link.u-hover-grey-25:hover {
 }
 .u-button-style.u-grey-5,
 .u-button-style.u-grey-5[class*="u-border-"] {
-  color: #111111 !important;
+  /*color: #111111 !important;*/
   background-color: #f2f2f2 !important;
 }
 .u-button-style.u-grey-5:hover,
@@ -26496,7 +26496,7 @@ li.active > a.u-button-style.u-button-style.u-border-active-palette-1 {
 }
 .u-button-style.u-border-palette-1-light-1 {
   border-color: #77aad9 !important;
-  color: #77aad9 !important;
+  color: #478ac9 !important;
   background-color: transparent !important;
 }
 .u-button-style.u-border-palette-1-light-1:hover,
@@ -30789,7 +30789,7 @@ a.u-button-style.u-button-style.active > .u-text-active-palette-1-base[class*="u
 .u-button-style:hover > .u-text-hover-palette-1-base svg,
 .u-button-style.u-button-style.active > .u-text-active-palette-1-base svg,
 .u-text-hover-palette-1-base:focus svg {
-  fill: #478ac9;
+  /*fill: #478ac9;*/
 }
 .u-link.u-text-palette-1-base:hover {
   color: #387cbd !important;
@@ -33690,27 +33690,34 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-image-1 {
   width: 127px;
   height: 127px;
-  background-image: url("../img/user.png");
   background-position: 50% 50%;
   margin: 20px auto 0;
+}
+
+#imagen-profesor {
+    background-image: url("../img/profesor.png");
+}
+
+#imagen-estudiante {
+    background-image: url("../img/user.png");
 }
 
 .u-header .u-btn-1 {
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.625rem;
+  font-size: 0.6rem;
   letter-spacing: 1px;
   background-image: none;
   border-style: solid;
   align-self: flex-end;
   margin: -32px 0 auto auto;
-  padding: 9px 20px 11px 19px;
+  padding: 8px 19px;
 }
 
 .u-header .u-image-2 {
   width: 99px;
   height: 99px;
-  background-image: url("https://images01.nicepage.com/e946e43613bcf1e901a560a2/5fdb65d5c854543dbb193477/logo.png?version=");
+  background-image: url("../img/logo.png");
   background-position: 50% 50%;
   margin: -69px auto 0 62px;
 }
@@ -33724,7 +33731,7 @@ a.u-link.u-text-hover-grey-90:hover {
   border-style: solid;
   align-self: flex-end;
   margin: -69px 0px auto auto;
-  padding: 9px 20px 11px 19px;
+  padding: 9px 19px;
 }
 @media (max-width: 1199px) {
   .u-header .u-sheet-1 {

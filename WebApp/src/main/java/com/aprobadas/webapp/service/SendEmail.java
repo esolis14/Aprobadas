@@ -75,7 +75,7 @@ public class SendEmail {
         }
     }
 
-    public void sendNotificacionAceptación(final String destinatario, final String nombre, final String apellido) {
+    public void sendNotificacionAceptacion(final String destinatario, final String nombre, final String apellido) {
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

@@ -2,6 +2,10 @@
   color: #125583;
 }
 
+.star-container {
+  font-size: 20px;
+}
+
 .u-section-1 .u-sheet-1 {
   min-height: 118px;
 }
@@ -127,14 +131,14 @@
 .u-section-2 .u-text-3 {
   line-height: 2;
   text-transform: uppercase;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   margin: 10px 0 0;
 }
 
 .u-section-2 .u-text-4 {
   line-height: 2;
   width: 233px;
-  font-weight: 700;
+  font-weight: 400;
   margin: 10px auto 0;
 }
 
@@ -145,7 +149,7 @@
   background-image: none;
   font-weight: 700;
   letter-spacing: 1px;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
 }
 
 .u-section-2 .u-list-item-2 {
@@ -276,7 +280,7 @@
   }
 
   .u-section-2 .u-text-1 {
-    font-size: 1.375rem;
+    font-size: 1.1rem;
     width: auto;
   }
 
@@ -288,10 +292,8 @@
   }
 
   .u-section-2 .u-text-2 {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     width: auto;
-    margin-left: 5px;
-    margin-right: 5px;
   }
 
   .u-section-2 .u-text-3 {

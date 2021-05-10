@@ -25,7 +25,7 @@
   text-transform: uppercase;
   letter-spacing: 5px;
   font-family: "PT Sans", sans-serif;
-  margin: 107px 0 0;
+  margin: 87px 0 0;
 }
 
 .u-section-1 .u-text-2 {
@@ -34,12 +34,14 @@
   font-family: Raleway, sans-serif;
   font-weight: 400;
   margin: 19px 0 0;
+  text-align: justify;
 }
 
 .u-section-1 .u-text-3 {
   font-size: 1.25rem;
   font-style: italic;
   margin: 18px 156px 0 0;
+  text-align: justify;
 }
 
 .u-section-1 .u-btn-1 {

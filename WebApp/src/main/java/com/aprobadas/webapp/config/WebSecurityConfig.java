@@ -29,9 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http
                 .authorizeRequests()
                 .antMatchers("/css/**","/img/**","/js/**").permitAll()
-                .antMatchers("/", "/login", "/form*").permitAll()
-                .antMatchers("/admin*").access("hasRole('ADMIN')")
-                .antMatchers("/user*", "/clases*").access("hasRole('USER') or hasRole('ADMIN')")
+                .antMatchers("/", "/login", "/form/**").permitAll()
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/user/**", "/clases/**").access("hasRole('USER') or hasRole('ADMIN')")
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()// Personaliza el proceso de inicio de sesión
@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     // Registra el service para usuarios y el encriptador de contraseña
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, HttpServletRequest request) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // Setting Service to find User in the database and Setting PassswordEncoder
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }

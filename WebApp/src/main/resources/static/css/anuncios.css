@@ -67,7 +67,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1rem;
     margin: -3px 231px 0 0;
 }
 
@@ -75,7 +75,7 @@ body {
     border-style: solid;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.875rem;
+    font-size: 0.7rem;
     letter-spacing: 1px;
     background-image: none;
     margin: -16px 5px 0 auto;
@@ -84,13 +84,13 @@ body {
 .u-section-1 .u-text-3 {
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: normal;
     margin: -16px 231px 10px 0;
 }
 
 .u-section-1 .u-text-4 {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     margin: 20px 0 0;
 }
 
@@ -400,8 +400,9 @@ body {
     }
 
     .u-section-1 .u-text-1 {
-        margin-right: calc(((100% - 720px) / 2) + 55px);
-        margin-left: calc(((100% - 720px) / 2) + 54px);
+        margin: auto;
+        /*margin-right: calc(((100% - 720px) / 2) + 55px);
+        margin-left: calc(((100% - 720px) / 2) + 54px);*/
     }
 
     .u-section-1 .u-list-1 {
@@ -478,7 +479,7 @@ body {
 
     .u-section-1 .u-text-1 {
         width: 540px;
-        margin-top: -142px;
+        /*margin-top: -142px;*/
         margin-left: calc(((100% - 540px) / 2));
         margin-right: calc(((100% - 540px) / 2));
     }
@@ -489,8 +490,8 @@ body {
     }
 
     .u-section-1 .u-container-layout-2 {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .u-section-1 .u-text-2 {

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -32,9 +34,16 @@ public class ClasesController {
     public String showAllClases(Model model, Principal principal, @ModelAttribute("vistaProf") boolean vistaProf) {
         User sessionUser = userService.getUserByEmail(principal.getName());
         List<Oferta> clases = clasesService.getOfertasByGrado(sessionUser.getGrado());
+        List<String> asignaturas;
+
         model.addAttribute("asignaturas", asignaturasService.getAllAsignaturas());
-        // TODO: Repasar
         if(!clases.isEmpty()) {
+            asignaturas = new ArrayList<>();
+            for (Oferta clase : clases) {
+                asignaturas.add(clase.getAsignatura().getNombre());
+            }
+            asignaturas = new ArrayList<>(new HashSet<>(asignaturas)); //Eliminar duplicados de la lista.
+            model.addAttribute("asignaturas", asignaturas);
             model.addAttribute("clases", clases);
         } else {
             model.addAttribute("msg",true);
@@ -120,6 +129,16 @@ public class ClasesController {
     @GetMapping("/eliminarSolicitud/{id}")
     public String deleteSolicitud(@PathVariable("id") int id, @ModelAttribute("vistaProf") boolean vistaProf, RedirectAttributes attributes) {
         clasesService.deleteSolicitudById(id);
+        attributes.addFlashAttribute("vistaProf", vistaProf);
+        return "redirect:/clases/misSolicitudes";
+    }
+
+    @GetMapping("/valorarSolicitud")
+    public String valorarSolicitud(@RequestParam(name = "id") int id, @RequestParam(name = "rate", required = false, defaultValue = "0")  int rate, @ModelAttribute("vistaProf") boolean vistaProf, RedirectAttributes attributes) {
+        Solicitud solicitud = clasesService.getSolicitudById(id);
+        solicitud.setValoracion(rate);
+        clasesService.saveSolicitud(solicitud);
+        clasesService.actualizarValoracionOferta(solicitud.getOferta().getId());
         attributes.addFlashAttribute("vistaProf", vistaProf);
         return "redirect:/clases/misSolicitudes";
     }

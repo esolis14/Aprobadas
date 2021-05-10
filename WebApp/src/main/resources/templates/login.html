@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>aprobadas</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/effects.css}">
 </head>
-<body>
+<body id="image_background">
 <main>
     <section class="top"></section>
     <section class="bottom"></section>
@@ -19,14 +18,13 @@
             <p th:if="${emailError}" class="error_message">Ya existe un usuario con este email. Inicia sesión.</p>
             <button id="login_button" type="submit">Iniciar sesión</button>
         </form>
-        <!---
         <form id="email_form" method="post" th:action="@{/form/sendCode}" th:object="${user}" hidden>
             <h1><img class="logo" th:src="@{/img/logo.png}" alt="Logo"></h1>
             <input id="reg_email" type="email" placeholder="email@ikasle.ehu.eus" th:field="*{email}" required/>
             <p th:if="${emailError}" class="error_message">Ya existe un usuario con este email.</p>
             <button id="email_button" type="submit">Registrarse</button>
-        </form> --->
-        <a th:href="@{/form/register}" id="switchForm2">
+        </form>
+        <a id="switchForm">
             <p>¿Todavía no estás registrado?<br>Regístrate ya</p>
         </a>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

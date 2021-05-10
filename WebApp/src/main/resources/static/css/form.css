@@ -8,7 +8,7 @@ body {
 }
 
 #image_background {
-    background: url("../img/colores.png") no-repeat center;
+    background: url("../img/form.png") no-repeat center;
     background-size: cover;
 }
 
@@ -74,7 +74,7 @@ h1  {
 button {
     text-transform: uppercase;
     background: #1A6AA0;
-    border-radius: 1px;
+    border-radius: 50px;
     border: 1px solid #1A6AA0;
     padding: 12px 40px;
     color: white;
